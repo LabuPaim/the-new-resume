@@ -1,73 +1,89 @@
+
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img src="public\img\labuPaim-SemFundo.png" width="200" alt="Nest Logo" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<p align="center">
+  <a href="https://docs.nestjs.com/" target="blank"><img src="public\img\nest.png" width="100" alt="Nest Logo" /></a>
+  <a href="https://swagger.io/" target="blank"><img src="public\img\swagger.png" width="100" alt="Swagger Logo" /></a>
+  <a href="https://www.typescriptlang.org/" target="blank"><img src="public\img\TS.png" width="100" alt="TypeScript Logo"/></a>
+  <a href="https://nodejs.org/en/" target="blank"><img src="public\img\node.png" width="100"  alt="NodeJs Logo" /></a>
+  <a href="https://insomnia.rest/" target="blank"><img src="public\img\insomnia.png" width="100"  alt="Insomnia Logo" /></a>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+</p>    
 
-## Description
+## Descrição
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Back-end criado com [Nest](https://github.com/nestjs/nest) um framework com estrutura progressiva do Node.js com TypeScript do lado do servidor eficiente e escalável e documentação feita em Swagger.
 
-## Installation
+## Comandos Utilizados
 
 ```bash
-$ npm install
+$ npm i -g @nestjs/cli
+# Instala o NestJS Globalmente
 ```
 
-## Running the app
+```bash
+$ nest new theNewResume
+# Criação das dependências do NestJs onde o nome do projeto é "theNewResume"
+```
+
+
+```bash
+$ yarn add @nestjs/swagger
+# Instalação do Swagger para NestJs
+```
+
+```bash
+$ yarn add class-validator
+# Instalação de lib para validação de dados
+```
+
+```bash
+$ nest g resource
+# Criação completa de arquitetura do CRUD
+```
+
+## Instalação
+
+```bash
+$ yarn
+```
+
+## Executando a aplicação
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
-## Test
+## Teste
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
 
-## Support
+## Suporte
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Nest é um projeto de código aberto licenciado pelo MIT. Se quiser acessar a documentação é só  [clicar aqui](https://docs.nestjs.com/).
 
-## Stay in touch
+## Contato
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - Victor Paim
+- Linkedin - [@labupaim](https://www.linkedin.com/in/labupaim/)
+- GitHub - [@LabuPaim](https://github.com/LabuPaim)
+- WhatsApp -  +55 (71) 9 8300-6611
