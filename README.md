@@ -46,6 +46,11 @@ $ yarn add @prisma/client
 ```
 
 ```bash
+$ npx prisma init
+# Inicialização do schema do prisma
+```
+
+```bash
 $ yarn add class-validator
 # Instalação de lib para validação de dados
 ```
