@@ -36,6 +36,16 @@ $ yarn add @nestjs/swagger
 ```
 
 ```bash
+$ yarn add prisma -D
+# Instalação do Prisma para desenvolvimento
+```
+
+```bash
+$ yarn add @prisma/client
+# Instalação do client do prisma para build
+```
+
+```bash
 $ yarn add class-validator
 # Instalação de lib para validação de dados
 ```
