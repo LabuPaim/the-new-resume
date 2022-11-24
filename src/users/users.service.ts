@@ -24,16 +24,16 @@ export class UsersService {
     const updatedUser = this.users.find((user) => user.id === updateUserDto.id);
     return updatedUser;
   }
-  
-  findAll() {
-    return `This action returns all users`;
+
+  async findAll(): Promise<IUserEntity[]> {
+    return this.users;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} user`;
+  }
+
+  findOne(id: string) {
+    return `This action returns a #${id} user`;
   }
 }
