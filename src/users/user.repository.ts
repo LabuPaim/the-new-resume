@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Exception } from 'src/utils/exceptions/exception';
+import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUserEntity } from './entities/user.entity';
 
@@ -8,9 +10,15 @@ export class UserRepository {
   constructor(private prisma: PrismaService) {}
 
   async createUser(user: IUserEntity) {
-    const CreatedUser = await this.prisma.user.create({ data: user });
-    
-    return CreatedUser;
+    try {
+      const CreatedUser = await this.prisma.user.create({ data: user });
+      return CreatedUser;
+    } catch (err) {
+      throw new Exception(
+        Exceptions.DatabaseException,
+        'Email ja cadastrado',
+      );
+    }
   }
 
   async updateUser(user: UpdateUserDto): Promise<IUserEntity> {

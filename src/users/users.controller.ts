@@ -13,6 +13,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUserEntity } from './entities/user.entity';
 import { Response } from 'express';
+import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 
 @Controller('users')
 export class UsersController {
@@ -27,7 +28,7 @@ export class UsersController {
       const result = await this.usersService.create(createUserDto);
       return response.status(200).send(result);
     } catch (error) {
-      console.log(error);
+      HandleException(error);
     }
   }
 
@@ -40,7 +41,7 @@ export class UsersController {
       const result = await this.usersService.update(updateUserDto);
       return response.status(200).send(result);
     } catch (error) {
-      console.log(error);
+      HandleException(error);
     }
   }
 
@@ -50,7 +51,7 @@ export class UsersController {
       const result = await this.usersService.findAll();
       return response.status(200).send(result);
     } catch (error) {
-      console.log(error);
+      HandleException(error);
     }
   }
 
@@ -60,7 +61,7 @@ export class UsersController {
       const result = await this.usersService.findOne(id);
       return response.status(200).send(result);
     } catch (error) {
-      console.log(error);
+      HandleException(error);
     }
   }
 
@@ -70,7 +71,7 @@ export class UsersController {
       const result = await this.usersService.remove(id);
       return response.status(200).send(result);
     } catch (error) {
-      console.log(error);
+      HandleException(error);
     }
   }
 }
