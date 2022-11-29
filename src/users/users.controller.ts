@@ -24,12 +24,9 @@ export class UsersController {
     @Res() response: Response,
   ) {
     try {
-      // console.log('Deu try');
       const result = await this.usersService.create(createUserDto);
       return response.status(200).send(result);
-      // response.status(201).send(result);
     } catch (error) {
-      // console.log('Deu erro');
       console.log(error);
     }
   }
