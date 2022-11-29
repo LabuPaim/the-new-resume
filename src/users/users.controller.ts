@@ -32,27 +32,45 @@ export class UsersController {
   }
 
   @Patch(':id')
-  async update(@Body() updateUserDto: UpdateUserDto): Promise<IUserEntity> {
-    console.log('Updating');
+  async update(
+    @Body() updateUserDto: UpdateUserDto,
+    @Res() response: Response,
+  ) {
     try {
-      return await this.usersService.update(updateUserDto);
+      const result = await this.usersService.update(updateUserDto);
+      return response.status(200).send(result);
     } catch (error) {
       console.log(error);
     }
   }
 
   @Get()
-  async findAll(): Promise<IUserEntity[]> {
-    return await this.usersService.findAll();
+  async findAll(@Res() response: Response) {
+    try {
+      const result = await this.usersService.findAll();
+      return response.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+  async findOne(@Param('id') id: string, @Res() response: Response) {
+    try {
+      const result = await this.usersService.findOne(id);
+      return response.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+  async remove(@Param('id') id: string, @Res() response: Response) {
+    try {
+      const result = await this.usersService.remove(id);
+      return response.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
