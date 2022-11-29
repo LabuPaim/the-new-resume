@@ -60,6 +60,11 @@ $ nest g resource
 # Criação completa de arquitetura do CRUD
 ```
 
+```bash
+$ npx prisma migrate dev --name User
+# Criação da tabela no postgres
+```
+
 ## Instalação
 
 ```bash

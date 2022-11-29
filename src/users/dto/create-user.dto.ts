@@ -20,10 +20,5 @@ export class CreateUserDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  cpf: string;
-
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
   role: string;
 }

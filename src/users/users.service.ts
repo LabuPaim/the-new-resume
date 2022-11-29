@@ -3,37 +3,37 @@ import { randomUUID } from 'crypto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUserEntity } from './entities/user.entity';
+import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UsersService {
-  private users: IUserEntity[] = [];
+  constructor(private readonly users: UserRepository) {}
+  // private users: IUserEntity[] = [];
 
-  async create(createUserDto: CreateUserDto): Promise<IUserEntity> {
+  async create(createUserDto: CreateUserDto) {
     const userEntity = { ...createUserDto, id: randomUUID() };
-    this.users.push(userEntity);
-    return userEntity;
+    const createdUser = await this.users.createUser(userEntity);
+    return createdUser;
   }
 
   async update(updateUserDto: UpdateUserDto): Promise<IUserEntity> {
-    this.users.map((user, index) => {
-      if (user.id === updateUserDto.id) {
-        const UpdatedUser = Object.assign(user, updateUserDto);
-        this.users.splice(index, 1, UpdatedUser);
-      }
-    });
-    const updatedUser = this.users.find((user) => user.id === updateUserDto.id);
-    return updatedUser;
+
+    
+    return this.users.updateUser(
+      updateUserDto
+      
+    );
   }
 
   async findAll(): Promise<IUserEntity[]> {
-    return this.users;
+    return await this.users.findAllUsers();
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    return await this.users.deleteUser(id)
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string) {
+    return await this.users.findUserById(id);
   }
 }
