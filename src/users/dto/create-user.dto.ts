@@ -5,7 +5,7 @@ export class CreateUserDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  name: string;
+  login: string;
 
   @ApiProperty()
   @IsEmail()
@@ -18,7 +18,49 @@ export class CreateUserDto {
   password: string;
 
   @ApiProperty()
-  @IsString()
   @IsNotEmpty()
   role: string;
+
+  // candidato: Candidato[];
+  // empresa: Empresa[];
 }
+
+// enum Role {
+//   CANDIDATO,
+//   EMPRESA,
+// }
+
+// class Candidato {
+//   userId: string;
+//   user: CreateUserDto;
+//   nome: string;
+//   nascimento: Date;
+//   cpf: String;
+//   celular: String;
+//   cidade: String;
+//   estado: String;
+//   descricao?: String;
+//   // stack:       Stack[]
+//   // nivel:       Nivel
+//   // habilidades: Habilidades[]
+//   // contratos:   Contratos[]
+//   // office:      Office[]
+//   // deficiencia: Boolean
+//   // vaga:        Vaga[]
+//   // links:       Links[]
+//   // experiencia: Experiencia[]
+//   // formacao:    Formacao[]
+// }
+
+// class Empresa {
+//   userId: String;
+//   user: CreateUserDto;
+//   nome: String;
+//   cnpj: String;
+//   telefone: String;
+//   descricao?: String;
+//   cidade: String;
+//   estado: String;
+//   // vaga:      Vaga[]
+//   // links:     Links[]
+// }
