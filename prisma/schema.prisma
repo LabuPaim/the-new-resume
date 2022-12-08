@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -19,7 +16,7 @@ model User {
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   candidato Candidato[]
-  empresa   Empresa[] 
+  empresa   Empresa[]
 }
 
 enum Role {
@@ -38,30 +35,30 @@ model Candidato {
   cidade      String
   estado      String
   descricao   String?
-  links       String[]
   stack       Stack[]
   nivel       Nivel
-  formacao    String[]
   habilidades Habilidades[]
-  experiencia String[]
   contratos   Contratos[]
   office      Office[]
   deficiencia Boolean
   vaga        Vaga[]
+  links       Links[]
+  experiencia Experiencia[]
+  formacao    Formacao[]
 }
 
 model Empresa {
-  id        String   @id @unique
+  id        String  @id @unique
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
   nome      String
-  cnpj      String   @unique
-  telefone  String   @unique
+  cnpj      String  @unique
+  telefone  String  @unique
   descricao String?
-  links     String[]
   cidade    String
   estado    String
   vaga      Vaga[]
+  links     Links[]
 }
 
 model Vaga {
@@ -78,6 +75,44 @@ model Vaga {
   contratos   Contratos
   office      Office
   deficiencia Bool
+}
+
+model Links {
+  id          String    @id @unique
+  candidato   Candidato @relation(fields: [candidatoId], references: [id])
+  empresa     Empresa   @relation(fields: [empresaId], references: [id])
+  candidatoId String
+  empresaId   String
+  github      String?
+  linkedin    String?
+  instagram   String?
+  site        String?
+}
+
+model Experiencia {
+  id          String        @id @unique
+  candidato   Candidato     @relation(fields: [candidatoId], references: [id])
+  candidatoId String
+  empresa     String?
+  cargo       String?
+  descricao   String?
+  habilidades Habilidades[]
+  dataInicio  DateTime
+  dataFinal   DateTime?
+  atualmente  Boolean
+}
+
+model Formacao {
+  id          String    @id @unique
+  candidato   Candidato @relation(fields: [candidatoId], references: [id])
+  candidatoId String
+  instituicao String
+  nivel       String
+  curso       String
+  situacao    String
+  dataInicio  DateTime
+  dataFinal   DateTime?
+  atualmente  Boolean
 }
 
 enum Bool {
