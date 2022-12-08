@@ -11,11 +11,144 @@ datasource db {
 }
 
 model User {
-  id        String   @id @unique
-  name      String
-  email     String   @unique
+  id        String      @id @unique
+  login     String
+  email     String      @unique
   password  String
-  role      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  role      Role
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  candidato Candidato[]
+  empresa   Empresa[] 
+}
+
+enum Role {
+  CANDIDATO
+  EMPRESA
+}
+
+model Candidato {
+  id          String        @id @unique
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  nome        String
+  nascimento  DateTime
+  cpf         String        @unique
+  celular     String        @unique
+  cidade      String
+  estado      String
+  descricao   String?
+  links       String[]
+  stack       Stack[]
+  nivel       Nivel
+  formacao    String[]
+  habilidades Habilidades[]
+  experiencia String[]
+  contratos   Contratos[]
+  office      Office[]
+  deficiencia Boolean
+  vaga        Vaga[]
+}
+
+model Empresa {
+  id        String   @id @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  nome      String
+  cnpj      String   @unique
+  telefone  String   @unique
+  descricao String?
+  links     String[]
+  cidade    String
+  estado    String
+  vaga      Vaga[]
+}
+
+model Vaga {
+  id          String        @id @unique
+  userId      String
+  user        Empresa       @relation(fields: [userId], references: [id])
+  candidato   Candidato[]
+  stack       Stack
+  nivel       Nivel
+  descricao   String?
+  formacao    String[]
+  habilidades Habilidades[]
+  experiencia String[]
+  contratos   Contratos
+  office      Office
+  deficiencia Bool
+}
+
+enum Bool {
+  SIM
+  NAO
+  TANTOFAZ
+}
+
+enum Stack {
+  FULLSTACK
+  FRONTEND
+  BACKEND
+}
+
+enum Nivel {
+  JUNIOR
+  PLENO
+  SENIOR
+}
+
+enum Contratos {
+  PJ
+  CLT
+}
+
+enum Office {
+  PRESENCIAL
+  HIBRIDO
+  HOMEOFFICE
+}
+
+enum Habilidades {
+  ANDROIDSTUDIO
+  ANGULAR
+  API
+  APIREST
+  APIRESTFULL
+  BASH
+  CLEANCODE
+  CSS
+  DART
+  DESIGNPATTERN
+  EXPRESS
+  FIGMA
+  FIREBASE
+  GIT
+  GITHUB
+  GRAPHQL
+  HTML
+  JAVA
+  JAVASCRIPT
+  JSON
+  KANBAN
+  MONGODB
+  MVC
+  NESTJS
+  NEXTJS
+  NODEJS
+  NOSQL
+  PHP
+  POSTGRESQL
+  PYTHON
+  REACTJS
+  REDUX
+  SASS
+  SCRUM
+  SCSS
+  SEO
+  SOLID
+  SQL
+  STYLEDCOMPONENTS
+  TYPESCRIPT
+  VUE
 }
