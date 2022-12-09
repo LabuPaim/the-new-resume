@@ -12,7 +12,7 @@ model User {
   login     String
   email     String      @unique
   password  String
-  role      Role
+  role      Role        @default(CANDIDATO)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   candidato Candidato[]

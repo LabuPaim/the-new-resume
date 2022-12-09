@@ -11,7 +11,15 @@ export class UserRepository {
 
   async createUser(user: IUserEntity) {
     try {
-      const CreatedUser = await this.prisma.user.create({ data: user });
+      const CreatedUser = await this.prisma.user.create({
+        data: {
+          id: user.id,
+          email: user.email,
+          password: user.password,
+          login: user.login,
+          role: "CANDIDATO",
+        },
+      });
       return CreatedUser;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException, 'Email ja cadastrado');
