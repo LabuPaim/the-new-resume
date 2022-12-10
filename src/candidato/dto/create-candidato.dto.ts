@@ -1,28 +1,28 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Experiencia, Formacao, Links, User, Vaga } from '@prisma/client';
 import {
-  Allow,
+  Contratos,
+  Experiencia,
+  Formacao,
+  Habilidades,
+  Links,
+  Nivel,
+  Office,
+  Stack,
+  User,
+  Vaga,
+} from '@prisma/client';
+import {
   IsArray,
   IsBoolean,
   IsDataURI,
   IsDate,
-  IsEmail,
   IsEnum,
-  IsFQDN,
   IsNotEmpty,
   IsString,
-  Length,
   MaxLength,
   MinLength,
   ValidateNested,
 } from 'class-validator';
-import {
-  Contratos,
-  Habilidades,
-  Nivel,
-  Office,
-  Stack,
-} from 'src/utils/enum/enum';
 
 export class CreateCandidatoDto {
   @ApiProperty()

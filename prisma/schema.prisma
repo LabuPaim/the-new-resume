@@ -34,11 +34,11 @@ model Candidato {
   cidade      String
   estado      String
   descricao   String?
-  stack       Stack[]
+  stack       Stack[] 
   nivel       Nivel
   habilidades Habilidades[]
   contratos   Contratos[]
-  office      Office[]
+  office      Office[] 
   deficiencia Boolean
   vaga        Vaga[]
   links       Links[]
@@ -120,29 +120,34 @@ enum Bool {
   SIM
   NAO
   TANTOFAZ
+  NULL
 }
 
 enum Stack {
   FULLSTACK
   FRONTEND
   BACKEND
+  NULL
 }
 
 enum Nivel {
   JUNIOR
   PLENO
   SENIOR
+  NULL
 }
 
 enum Contratos {
   PJ
   CLT
+  NULL
 }
 
 enum Office {
   PRESENCIAL
   HIBRIDO
   HOMEOFFICE
+  NULL
 }
 
 enum Habilidades {
@@ -187,4 +192,5 @@ enum Habilidades {
   STYLEDCOMPONENTS
   TYPESCRIPT
   VUE
+  NULL
 }
