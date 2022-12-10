@@ -17,7 +17,7 @@ export class UserRepository {
           id: user.id,
           email: user.email,
           password: user.password,
-          role: Role.candidato,
+          role: user.role,
         },
       });
       return CreatedUser;

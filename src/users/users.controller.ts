@@ -13,6 +13,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Response } from 'express';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
+import { IUserEntity } from './entities/user.entity';
 
 @Controller('users')
 export class UsersController {
@@ -20,7 +21,7 @@ export class UsersController {
 
   @Post()
   async create(
-    @Body() createUserDto: CreateUserDto,
+    @Body() createUserDto: IUserEntity,
     @Res() response: Response,
   ) {
     try {

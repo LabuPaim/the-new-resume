@@ -11,7 +11,7 @@ import { UserRepository } from './user.repository';
 export class UsersService {
   constructor(private readonly users: UserRepository) {}
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: IUserEntity) {
     if (createUserDto.password.length <= 7) {
       throw new Exception(
         Exceptions.InvalidData,
