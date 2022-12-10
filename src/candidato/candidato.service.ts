@@ -12,7 +12,7 @@ export class CandidatoService {
   constructor(private readonly candidato: CandidatoRepository) {}
 
   async create(createCandidatoDto: CreateCandidatoDto) {
-    if (createCandidatoDto.user.role !== 'CANDIDATO') {
+    if (createCandidatoDto.user.role !== 'candidato') {
       throw new Exception(
         Exceptions.InvalidData,
         'O usuário não é um candidato',

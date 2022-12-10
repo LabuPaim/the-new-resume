@@ -11,7 +11,7 @@ model User {
   id        String      @id @default(uuid())
   email     String      @unique
   password  String
-  role      Role        @default(CANDIDATO)
+  role      Role        @default(candidato)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   candidato Candidato[]
@@ -19,8 +19,8 @@ model User {
 }
 
 enum Role {
-  CANDIDATO
-  EMPRESA
+  candidato
+  empresa
 }
 
 model Candidato {
