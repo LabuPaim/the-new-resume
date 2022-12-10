@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Role } from 'src/utils/enum/enum';
 import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -16,8 +17,7 @@ export class UserRepository {
           id: user.id,
           email: user.email,
           password: user.password,
-          login: user.login,
-          role: "CANDIDATO",
+          role: Role.CANDIDATO,
         },
       });
       return CreatedUser;

@@ -1,12 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsAlphanumeric,
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  MinLength,
+} from 'class-validator';
 
 export class CreateUserDto {
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  login: string;
-
   @ApiProperty()
   @IsEmail()
   @IsNotEmpty()
@@ -15,6 +16,9 @@ export class CreateUserDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
+  @IsAlphanumeric()
+  @MinLength(8, {
+    message: 'Senha muito curta, mínimo de 8 dígitos',
+  })
   password: string;
-
 }

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="4ihEnS65VXK1P4ysS8s4" name="Página-1">
-        <mxGraphModel dx="884" dy="734" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="409" dy="734" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -14,10 +14,10 @@
                         <mxPoint x="142.66756756756763" y="532" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="2" value="User&lt;br&gt;&lt;br&gt;id&lt;br&gt;Login&lt;br&gt;Email&lt;br&gt;Password&lt;br&gt;Role" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;strokeWidth=3;strokeColor=#FF8000;" parent="1" vertex="1">
+                <mxCell id="2" value="User&lt;br&gt;&lt;br&gt;id&lt;br&gt;&lt;br&gt;Email&lt;br&gt;Password&lt;br&gt;Role" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;strokeWidth=3;strokeColor=#FF8000;" parent="1" vertex="1">
                     <mxGeometry x="82" y="347" width="91" height="126" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="27">
+                <mxCell id="30" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="3" target="27" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="Candidato&lt;br&gt;&lt;br&gt;UserId&amp;nbsp;&lt;br&gt;Nome&lt;br&gt;Nascimento&lt;br&gt;CPF&lt;br&gt;Celular&lt;br&gt;Cidade&lt;br&gt;Estado&lt;br&gt;Descrição?&lt;br&gt;Links?[]&lt;br&gt;Stack[]&lt;br&gt;Nível&lt;br&gt;Formação?[]&lt;br&gt;Habilidades?[]&lt;br&gt;Experiência?[]&lt;br&gt;Contratos?[]&lt;br&gt;Office[]&lt;br&gt;Deficiência" style="whiteSpace=wrap;html=1;strokeColor=#00FF80;strokeWidth=3;verticalAlign=top;" parent="1" vertex="1">
@@ -26,7 +26,7 @@
                 <mxCell id="7" value="1:1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="237" y="281" width="27" height="18" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="10" target="27">
+                <mxCell id="28" value="" style="edgeStyle=none;html=1;" parent="1" source="10" target="27" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="10" value="Empresa&lt;br&gt;&lt;br&gt;UserId&lt;br&gt;Nome&lt;br&gt;CNPJ&lt;br&gt;Telefone&lt;br&gt;Descrição&lt;br&gt;Links?[]&lt;br&gt;Cidade&lt;br&gt;Estado" style="whiteSpace=wrap;html=1;strokeColor=#33FFFF;strokeWidth=3;verticalAlign=top;" parent="1" vertex="1">
@@ -35,13 +35,13 @@
                 <mxCell id="15" value="1:1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="220" y="501" width="27" height="18" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="Vagas&lt;br&gt;&lt;br&gt;Id&lt;br&gt;UserId&lt;br&gt;Título&lt;br&gt;Stack&lt;br&gt;Nível&lt;br&gt;Descrição?&lt;br&gt;Formação?[]&lt;br&gt;Habilidades?[]&lt;br&gt;Experiência?[]&lt;br&gt;Contrato&lt;br&gt;Officce&lt;br&gt;Deficiência[]" style="whiteSpace=wrap;html=1;strokeColor=#FF0080;strokeWidth=3;verticalAlign=top;" vertex="1" parent="1">
+                <mxCell id="27" value="Vagas&lt;br&gt;&lt;br&gt;Id&lt;br&gt;UserId&lt;br&gt;Título&lt;br&gt;Stack&lt;br&gt;Nível&lt;br&gt;Descrição?&lt;br&gt;Formação?[]&lt;br&gt;Habilidades?[]&lt;br&gt;Experiência?[]&lt;br&gt;Contrato&lt;br&gt;Officce&lt;br&gt;Deficiência[]" style="whiteSpace=wrap;html=1;strokeColor=#FF0080;strokeWidth=3;verticalAlign=top;" parent="1" vertex="1">
                     <mxGeometry x="604" y="356" width="98" height="225" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="1:n" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="29" value="1:n" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="504" y="519" width="27" height="18" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="n:n" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="31" value="n:n" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="515" y="297" width="27" height="18" as="geometry"/>
                 </mxCell>
             </root>
