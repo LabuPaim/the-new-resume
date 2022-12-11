@@ -23,11 +23,11 @@ export class CandidatoRepository {
           cidade: candidato.cidade,
           estado: candidato.estado,
           descricao: candidato.descricao,
-          stack: Stack.NULL,
-          nivel: Nivel.NULL,
-          habilidades: Habilidades.NULL,
-          contratos: Contratos.NULL,
-          office: [Office.NULL],
+          stack: candidato.stack,
+          nivel: candidato.nivel,
+          habilidades: candidato.habilidades,
+          contratos: candidato.contratos,
+          office: candidato.office,
           deficiencia: candidato.deficiencia,
         },
         include: {
@@ -38,6 +38,7 @@ export class CandidatoRepository {
           formacao: true,
         },
       });
+      console.log(CreatedCandidato);
       return CreatedCandidato;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException, 'Email ja cadastrado');

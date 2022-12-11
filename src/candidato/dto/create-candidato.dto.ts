@@ -28,22 +28,22 @@ export class CreateCandidatoDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  userId: string;
+  userId?: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @ValidateNested()
-  user: User;
+  user?: User;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  nome: string;
+  nome?: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsDate()
-  nascimento: Date;
+  nascimento?: Date;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -53,37 +53,36 @@ export class CreateCandidatoDto {
   @MaxLength(11, {
     message: 'CPF muito longo, máximo de 11 dígitos',
   })
-  cpf: string;
+  cpf?: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  celular: string;
+  celular?: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  cidade: string;
+  cidade?: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  estado: string;
+  estado?: string;
 
   @ApiProperty()
   @IsString()
   descricao?: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsArray()
   @IsEnum(Stack)
-  stack: Stack[];
+  stack?: Stack[];
 
   @ApiProperty()
   @IsNotEmpty()
   @IsEnum(Nivel)
-  nivel: Nivel;
+  nivel?: Nivel;
 
   @ApiProperty()
   @IsArray()
@@ -94,18 +93,18 @@ export class CreateCandidatoDto {
   @IsNotEmpty()
   @IsArray()
   @IsEnum(Contratos)
-  contratos: Contratos[];
+  contratos?: Contratos[];
 
   @ApiProperty()
   @IsNotEmpty()
   @IsArray()
   @IsEnum(Office)
-  office: Office[];
+  office?: Office[];
 
   @ApiProperty()
   @IsNotEmpty()
   @IsBoolean()
-  deficiencia: boolean;
+  deficiencia?: boolean;
 
   @ApiProperty()
   @IsArray()

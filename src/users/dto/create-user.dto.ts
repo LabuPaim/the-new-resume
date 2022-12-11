@@ -10,8 +10,7 @@ import {
 export class CreateUserDto {
   @ApiProperty()
   @IsEmail()
-  @IsNotEmpty()
-  email: string;
+  email?: string;
 
   @ApiProperty()
   @IsString()
@@ -20,5 +19,5 @@ export class CreateUserDto {
   @MinLength(8, {
     message: 'Senha muito curta, mínimo de 8 dígitos',
   })
-  password: string;
+  password?: string;
 }

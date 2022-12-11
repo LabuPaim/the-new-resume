@@ -11,14 +11,16 @@ import { ICandidatoEntity } from './entities/candidato.entity';
 export class CandidatoService {
   constructor(private readonly candidato: CandidatoRepository) {}
 
-  async create(createCandidatoDto: CreateCandidatoDto) {
-    if (createCandidatoDto.user.role !== 'candidato') {
-      throw new Exception(
-        Exceptions.InvalidData,
-        'O usuário não é um candidato',
-      );
-    }
-    const candidatoEntity = { ...createCandidatoDto, id: randomUUID() };
+  async create(createCandidatoDto: ICandidatoEntity) {
+    
+    // if (createCandidatoDto.user.role !== 'candidato') {
+      //   throw new Exception(
+        //     Exceptions.InvalidData,
+        //     'O usuário não é um candidato',
+        //   );
+        // }
+        const candidatoEntity = { ...createCandidatoDto, id: randomUUID() };
+        // console.log(candidatoEntity)
     const createdCandidato = await this.candidato.createCandidato(
       candidatoEntity,
     );

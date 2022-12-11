@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Role } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { IUserEntity } from './entities/user.entity';
 
 @Injectable()
@@ -27,7 +25,6 @@ export class UserRepository {
   }
 
   async updateUser(user: IUserEntity): Promise<IUserEntity> {
-    // console.log('updateUserDto')
     try {
       const UpdatedUser = await this.prisma.user.update({
         where: { id: user.id },

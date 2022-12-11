@@ -20,10 +20,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async create(
-    @Body() createUserDto: IUserEntity,
-    @Res() response: Response,
-  ) {
+  async create(@Body() createUserDto: IUserEntity, @Res() response: Response) {
     try {
       const result = await this.usersService.create(createUserDto);
       return response.status(200).send(result);
@@ -33,19 +30,11 @@ export class UsersController {
   }
 
   @Patch(':id')
-  async update(
-    @Body() UpdateUser: IUserEntity,
-    @Res() response: Response,
-  ) {
-    
+  async update(@Body() UpdateUser: IUserEntity, @Param('id') id: string) {
     try {
-      if (UpdateUser.id) {
-        delete UpdateUser.id;
-      }
-      const dataToUpdate = { ...UpdateUser, id: UpdateUser.id };
+      const dataToUpdate = { ...UpdateUser, id: id };
       return await this.usersService.update(dataToUpdate);
     } catch (error) {
-      
       HandleException(error);
     }
   }

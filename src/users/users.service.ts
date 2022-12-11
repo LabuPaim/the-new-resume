@@ -24,7 +24,6 @@ export class UsersService {
   }
 
   async update(updateUserDto: IUserEntity): Promise<IUserEntity>  {
-    // console.log('service')
     return this.users.updateUser(updateUserDto);
   }
 
