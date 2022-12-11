@@ -12,15 +12,7 @@ export class CandidatoService {
   constructor(private readonly candidato: CandidatoRepository) {}
 
   async create(createCandidatoDto: ICandidatoEntity) {
-    
-    // if (createCandidatoDto.user.role !== 'candidato') {
-      //   throw new Exception(
-        //     Exceptions.InvalidData,
-        //     'O usuário não é um candidato',
-        //   );
-        // }
-        const candidatoEntity = { ...createCandidatoDto, id: randomUUID() };
-        // console.log(candidatoEntity)
+    const candidatoEntity = { ...createCandidatoDto, id: randomUUID() };
     const createdCandidato = await this.candidato.createCandidato(
       candidatoEntity,
     );
@@ -28,7 +20,7 @@ export class CandidatoService {
   }
 
   async update(
-    updateCandidatoDto: UpdateCandidatoDto,
+    updateCandidatoDto: ICandidatoEntity,
   ): Promise<ICandidatoEntity> {
     return this.candidato.updateCandidato(updateCandidatoDto);
   }

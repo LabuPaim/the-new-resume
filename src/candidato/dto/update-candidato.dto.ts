@@ -4,7 +4,6 @@ import { CreateCandidatoDto } from './create-candidato.dto';
 
 export class UpdateCandidatoDto extends PartialType(CreateCandidatoDto) {
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   id: string;
 }

@@ -36,12 +36,12 @@ export class CandidatoController {
 
   @Patch(':id')
   async update(
-    @Body() updateCandidatoDto: UpdateCandidatoDto,
-    @Res() response: Response,
+    @Body() updateCandidatoDto: ICandidatoEntity,
+    @Param('id') id: string,
   ) {
     try {
-      const result = await this.candidatoService.update(updateCandidatoDto);
-      return response.status(200).send(result);
+      const result = { ...updateCandidatoDto, id: id };
+      return await this.candidatoService.update(result);
     } catch (error) {
       HandleException(error);
     }

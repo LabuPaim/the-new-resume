@@ -25,11 +25,11 @@ enum Role {
 
 model Candidato {
   id          String        @id @unique
-  userId      String?
-  user        User?          @relation(fields: [userId], references: [id])
-  nome        String?
-  nascimento  DateTime?
-  cpf         String?       @unique
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  nome        String
+  nascimento  String
+  cpf         String        @unique
   celular     String?       @unique
   cidade      String?
   estado      String?

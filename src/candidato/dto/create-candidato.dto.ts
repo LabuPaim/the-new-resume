@@ -26,47 +26,39 @@ import {
 
 export class CreateCandidatoDto {
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
-  userId?: string;
+  userId: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @ValidateNested()
-  user?: User;
+  user: User;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
-  nome?: string;
+  nome: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsDate()
-  nascimento?: Date;
+  nascimento: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @MinLength(11, {
     message: 'CPF muito curto, mínimo de 11 dígitos',
   })
   @MaxLength(11, {
     message: 'CPF muito longo, máximo de 11 dígitos',
   })
-  cpf?: string;
+  cpf: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   celular?: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   cidade?: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   estado?: string;
 
@@ -80,7 +72,6 @@ export class CreateCandidatoDto {
   stack?: Stack[];
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsEnum(Nivel)
   nivel?: Nivel;
 
@@ -90,19 +81,16 @@ export class CreateCandidatoDto {
   habilidades?: Habilidades[];
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsArray()
   @IsEnum(Contratos)
   contratos?: Contratos[];
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsArray()
   @IsEnum(Office)
   office?: Office[];
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsBoolean()
   deficiencia?: boolean;
 

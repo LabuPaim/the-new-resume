@@ -32,8 +32,8 @@ export class UsersController {
   @Patch(':id')
   async update(@Body() UpdateUser: IUserEntity, @Param('id') id: string) {
     try {
-      const dataToUpdate = { ...UpdateUser, id: id };
-      return await this.usersService.update(dataToUpdate);
+      const result = { ...UpdateUser, id: id };
+      return await this.usersService.update(result);
     } catch (error) {
       HandleException(error);
     }
