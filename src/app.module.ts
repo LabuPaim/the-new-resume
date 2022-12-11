@@ -6,8 +6,9 @@ import { CandidatoController } from './candidato/candidato.controller';
 import { CandidatoService } from './candidato/candidato.service';
 import { CandidatoRepository } from './candidato/candidato.repository';
 import { UsersModule } from './users/users.module';
+import { EmpresaModule } from './empresa/empresa.module';
 
 @Module({
-  imports: [DatabaseModule, UsersModule, CandidatoModule],
+  imports: [DatabaseModule, UsersModule, CandidatoModule, EmpresaModule],
 })
 export class AppModule {}
