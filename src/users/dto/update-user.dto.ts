@@ -1,5 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiProperty } from '@nestjs/swagger';
+import { Role } from '@prisma/client';
 import { IsNotEmpty } from 'class-validator';
 import { CreateUserDto } from './create-user.dto';
 
@@ -7,4 +8,8 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty()
   @IsNotEmpty()
   id: string;
+
+
+  @ApiProperty()
+  role: Role;
 }

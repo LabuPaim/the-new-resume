@@ -34,13 +34,18 @@ export class UsersController {
 
   @Patch(':id')
   async update(
-    @Body() updateUserDto: UpdateUserDto,
+    @Body() UpdateUser: IUserEntity,
     @Res() response: Response,
   ) {
+    
     try {
-      const result = await this.usersService.update(updateUserDto);
-      return response.status(200).send(result);
+      if (UpdateUser.id) {
+        delete UpdateUser.id;
+      }
+      const dataToUpdate = { ...UpdateUser, id: UpdateUser.id };
+      return await this.usersService.update(dataToUpdate);
     } catch (error) {
+      
       HandleException(error);
     }
   }

@@ -26,10 +26,11 @@ export class UserRepository {
     }
   }
 
-  async updateUser(user: UpdateUserDto): Promise<IUserEntity> {
+  async updateUser(user: IUserEntity): Promise<IUserEntity> {
+    // console.log('updateUserDto')
     try {
       const UpdatedUser = await this.prisma.user.update({
-        where: { id: user.id, email: user.email },
+        where: { id: user.id },
         data: user,
       });
       return UpdatedUser;
