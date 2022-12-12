@@ -36,4 +36,9 @@ export class UsersService {
   async findOne(id: string) {
     return await this.users.findUserById(id);
   }
+
+  async findUserByEmail(email: string): Promise<IUserEntity> {
+    const user = await this.users.findUserByEmail(email);
+    return user;
+  }
 }
