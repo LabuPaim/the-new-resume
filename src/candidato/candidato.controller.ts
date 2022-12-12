@@ -11,8 +11,6 @@ import {
 import { Response } from 'express';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { CandidatoService } from './candidato.service';
-import { CreateCandidatoDto } from './dto/create-candidato.dto';
-import { UpdateCandidatoDto } from './dto/update-candidato.dto';
 import { ICandidatoEntity } from './entities/candidato.entity';
 
 @Controller('candidato')
@@ -24,8 +22,6 @@ export class CandidatoController {
     @Body() createCandidatoDto: ICandidatoEntity,
     @Res() response: Response,
   ) {
-    // console.log('Controller')
-    // console.log(createCandidatoDto)
     try {
       const result = await this.candidatoService.create(createCandidatoDto);
       return response.status(200).send(result);

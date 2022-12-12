@@ -9,7 +9,6 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsNotEmpty()
   id: string;
 
-
   @ApiProperty()
   role: Role;
 }

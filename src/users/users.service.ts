@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { IUserEntity } from './entities/user.entity';
 import { UserRepository } from './user.repository';
 
@@ -23,7 +21,7 @@ export class UsersService {
     return createdUser;
   }
 
-  async update(updateUserDto: IUserEntity): Promise<IUserEntity>  {
+  async update(updateUserDto: IUserEntity): Promise<IUserEntity> {
     return this.users.updateUser(updateUserDto);
   }
 

@@ -1,10 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
-import { Exception } from 'src/utils/exceptions/exception';
-import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
 import { CandidatoRepository } from './candidato.repository';
-import { CreateCandidatoDto } from './dto/create-candidato.dto';
-import { UpdateCandidatoDto } from './dto/update-candidato.dto';
 import { ICandidatoEntity } from './entities/candidato.entity';
 
 @Injectable()

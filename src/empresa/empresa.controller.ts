@@ -1,34 +1,75 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Res,
+} from '@nestjs/common';
 import { EmpresaService } from './empresa.service';
-import { CreateEmpresaDto } from './dto/create-empresa.dto';
-import { UpdateEmpresaDto } from './dto/update-empresa.dto';
+import { IEmpresaEntity } from './entities/empresa.entity';
+import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
+import { Response } from 'express';
 
 @Controller('empresa')
 export class EmpresaController {
   constructor(private readonly empresaService: EmpresaService) {}
 
   @Post()
-  create(@Body() createEmpresaDto: CreateEmpresaDto) {
-    return this.empresaService.create(createEmpresaDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.empresaService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.empresaService.findOne(+id);
+  async create(
+    @Body() createEmpresaDto: IEmpresaEntity,
+    @Res() response: Response,
+  ) {
+    try {
+      const result = await this.empresaService.create(createEmpresaDto);
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEmpresaDto: UpdateEmpresaDto) {
-    return this.empresaService.update(+id, updateEmpresaDto);
+  async update(
+    @Body() createEmpresaDto: IEmpresaEntity,
+    @Param('id') id: string,
+  ) {
+    try {
+      const result = { ...createEmpresaDto, id: id };
+      return await this.empresaService.update(result);
+    } catch (error) {
+      HandleException(error);
+    }
+  }
+
+  @Get()
+  async findAll(@Res() response: Response) {
+    try {
+      const result = await this.empresaService.findAll();
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string, @Res() response: Response) {
+    try {
+      const result = await this.empresaService.findOne(id);
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.empresaService.remove(+id);
+  async remove(@Param('id') id: string, @Res() response: Response) {
+    try {
+      const result = await this.empresaService.remove(id);
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 }

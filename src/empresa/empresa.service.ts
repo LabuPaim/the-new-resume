@@ -1,26 +1,31 @@
 import { Injectable } from '@nestjs/common';
-import { CreateEmpresaDto } from './dto/create-empresa.dto';
-import { UpdateEmpresaDto } from './dto/update-empresa.dto';
+import { randomUUID } from 'crypto';
+import { EmpresaRepository } from './empresa.repository';
+import { IEmpresaEntity } from './entities/empresa.entity';
 
 @Injectable()
 export class EmpresaService {
-  create(createEmpresaDto: CreateEmpresaDto) {
-    return 'This action adds a new empresa';
+  constructor(private readonly empresa: EmpresaRepository) {}
+
+  async create(createEmpresaDto: IEmpresaEntity) {
+    const EmpresaEntity = { ...createEmpresaDto, id: randomUUID() };
+    const createdEmpresa = await this.empresa.createEmpresa(EmpresaEntity);
+    return createdEmpresa;
   }
 
-  findAll() {
-    return `This action returns all empresa`;
+  async update(updateEmpresaDto: IEmpresaEntity): Promise<IEmpresaEntity> {
+    return this.empresa.updateEmpresa(updateEmpresaDto);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} empresa`;
+  async findAll() {
+    return await this.empresa.findAllEmpresa();
   }
 
-  update(id: number, updateEmpresaDto: UpdateEmpresaDto) {
-    return `This action updates a #${id} empresa`;
+  async remove(id: string) {
+    return await this.empresa.deleteEmpresa(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} empresa`;
+  async findOne(id: string) {
+    return await this.empresa.findEmpresaById(id);
   }
 }

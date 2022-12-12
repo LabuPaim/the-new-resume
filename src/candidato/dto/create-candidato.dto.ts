@@ -17,7 +17,6 @@ import {
   IsDataURI,
   IsDate,
   IsEnum,
-  IsNotEmpty,
   IsString,
   MaxLength,
   MinLength,
