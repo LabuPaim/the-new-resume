@@ -5,7 +5,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { IUserEntity } from 'src/users/entities/user.entity';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { AuthService } from './auth.service';
-import { IsTeacherAuthorization } from './decorators/is-teacher.decorator';
+import { IsUserAuthorization } from './decorators/is-teacher.decorator';
 import { userLogged } from './decorators/user-logged.decorator';
 import { UserLoginDto } from './dto/auth.dto';
 
@@ -24,7 +24,7 @@ export class AuthController {
   }
 
   @Get()
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   async getUser(@userLogged() user: IUserEntity) {
     return user;

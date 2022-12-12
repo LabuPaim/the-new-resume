@@ -2,7 +2,7 @@ import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { UnauthorizedException } from '@nestjs/common/exceptions';
 
 @Injectable()
-export class IsTeacherAuthorization implements CanActivate {
+export class IsUserAuthorization implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const httpRequest = context.switchToHttp().getRequest();
 

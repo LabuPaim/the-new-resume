@@ -12,7 +12,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
-import { IsTeacherAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { CandidatoService } from './candidato.service';
 import { ICandidatoEntity } from './entities/candidato.entity';
@@ -22,7 +22,7 @@ import { ICandidatoEntity } from './entities/candidato.entity';
 export class CandidatoController {
   constructor(private readonly candidatoService: CandidatoService) {}
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Post()
   async create(
@@ -37,7 +37,7 @@ export class CandidatoController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Patch(':id')
   async update(
@@ -52,7 +52,7 @@ export class CandidatoController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get()
   async findAll(@Res() response: Response) {
@@ -64,7 +64,7 @@ export class CandidatoController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() response: Response) {
@@ -76,7 +76,7 @@ export class CandidatoController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() response: Response) {

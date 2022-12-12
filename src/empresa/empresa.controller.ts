@@ -15,14 +15,14 @@ import { Response } from 'express';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
-import { IsTeacherAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 
 @Controller('empresa')
 @ApiTags('Empresas')
 export class EmpresaController {
   constructor(private readonly empresaService: EmpresaService) {}
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Post()
   async create(
@@ -37,7 +37,7 @@ export class EmpresaController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Patch(':id')
   async update(
@@ -52,7 +52,7 @@ export class EmpresaController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get()
   async findAll(@Res() response: Response) {
@@ -64,7 +64,7 @@ export class EmpresaController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() response: Response) {
@@ -76,7 +76,7 @@ export class EmpresaController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() response: Response) {

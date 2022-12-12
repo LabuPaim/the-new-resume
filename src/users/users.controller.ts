@@ -16,7 +16,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
 import { userLogged } from 'src/auth/decorators/user-logged.decorator';
-import { IsTeacherAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 
 @Controller('users')
 @ApiTags('Users')
@@ -51,7 +51,7 @@ export class UsersController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get()
   async findAll(@Res() response: Response) {

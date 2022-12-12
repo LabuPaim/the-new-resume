@@ -22,7 +22,7 @@ export class AuthService {
       throw new Exception(Exceptions.UnauthorizedException, 'Invalid password');
     }
 
-    delete user.password;
+    // delete user.password;
 
     return {
       token: this.jwtService.sign({
