@@ -6,4 +6,8 @@ export class UpdateCandidatoDto extends PartialType(CreateCandidatoDto) {
   @ApiProperty()
   @IsString()
   id: string;
+
+  @ApiProperty()
+  @IsString()
+  userId: string
 }

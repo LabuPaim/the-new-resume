@@ -1,17 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { CandidatoRepository } from './candidato.repository';
+import { CreateCandidatoDto } from './dto/create-candidato.dto';
 import { ICandidatoEntity } from './entities/candidato.entity';
 
 @Injectable()
 export class CandidatoService {
   constructor(private readonly candidato: CandidatoRepository) {}
 
-  async create(createCandidatoDto: ICandidatoEntity) {
+  async create(createCandidatoDto: CreateCandidatoDto, id: string) {
     const candidatoEntity = { ...createCandidatoDto, id: randomUUID() };
-    const createdCandidato = await this.candidato.createCandidato(
-      candidatoEntity,
-    );
+    const createdCandidato = await this.candidato.createCandidato({
+      ...candidatoEntity,
+      userId: id,
+    });
     return createdCandidato;
   }
 

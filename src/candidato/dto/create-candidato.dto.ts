@@ -24,9 +24,6 @@ import {
 } from 'class-validator';
 
 export class CreateCandidatoDto {
-  @ApiProperty()
-  @IsString()
-  userId: string;
 
   @ApiProperty()
   @ValidateNested()
