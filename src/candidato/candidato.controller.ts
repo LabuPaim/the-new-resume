@@ -8,12 +8,14 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { CandidatoService } from './candidato.service';
 import { ICandidatoEntity } from './entities/candidato.entity';
 
 @Controller('candidato')
+@ApiTags('Candidatos')
 export class CandidatoController {
   constructor(private readonly candidatoService: CandidatoService) {}
 

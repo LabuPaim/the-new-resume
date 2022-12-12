@@ -12,8 +12,10 @@ import { EmpresaService } from './empresa.service';
 import { IEmpresaEntity } from './entities/empresa.entity';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('empresa')
+@ApiTags('Empresas')
 export class EmpresaController {
   constructor(private readonly empresaService: EmpresaService) {}
 
