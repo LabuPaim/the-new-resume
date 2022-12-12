@@ -12,13 +12,18 @@ import { EmpresaService } from './empresa.service';
 import { IEmpresaEntity } from './entities/empresa.entity';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { Response } from 'express';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { UseGuards } from '@nestjs/common/decorators';
+import { AuthGuard } from '@nestjs/passport';
+import { IsTeacherAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 
 @Controller('empresa')
 @ApiTags('Empresas')
 export class EmpresaController {
   constructor(private readonly empresaService: EmpresaService) {}
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Post()
   async create(
     @Body() createEmpresaDto: IEmpresaEntity,
@@ -32,6 +37,8 @@ export class EmpresaController {
     }
   }
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Patch(':id')
   async update(
     @Body() createEmpresaDto: IEmpresaEntity,
@@ -45,6 +52,8 @@ export class EmpresaController {
     }
   }
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Get()
   async findAll(@Res() response: Response) {
     try {
@@ -55,6 +64,8 @@ export class EmpresaController {
     }
   }
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() response: Response) {
     try {
@@ -65,6 +76,8 @@ export class EmpresaController {
     }
   }
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() response: Response) {
     try {
