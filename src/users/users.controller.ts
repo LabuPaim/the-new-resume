@@ -12,7 +12,11 @@ import { UsersService } from './users.service';
 import { Response } from 'express';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { IUserEntity } from './entities/user.entity';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { UseGuards } from '@nestjs/common/decorators';
+import { AuthGuard } from '@nestjs/passport';
+import { userLogged } from 'src/auth/decorators/user-logged.decorator';
+import { IsTeacherAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 
 @Controller('users')
 @ApiTags('Users')
@@ -29,16 +33,26 @@ export class UsersController {
     }
   }
 
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   @Patch(':id')
-  async update(@Body() UpdateUser: IUserEntity, @Param('id') id: string) {
+  async update(
+    @Body() UpdateUser: IUserEntity,
+    @userLogged() user: IUserEntity,
+  ) {
     try {
-      const result = { ...UpdateUser, id: id };
+      if (UpdateUser.id) {
+        delete UpdateUser.id;
+      }
+      const result = { ...UpdateUser, id: user.id };
       return await this.usersService.update(result);
     } catch (error) {
       HandleException(error);
     }
   }
 
+  @UseGuards(AuthGuard(), IsTeacherAuthorization)
+  @ApiBearerAuth()
   @Get()
   async findAll(@Res() response: Response) {
     try {
@@ -59,6 +73,8 @@ export class UsersController {
     }
   }
 
+  @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() response: Response) {
     try {
