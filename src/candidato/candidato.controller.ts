@@ -9,10 +9,14 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+import { AuthController } from 'src/auth/auth.controller';
 import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { userLogged } from 'src/auth/decorators/user-logged.decorator';
+import { IUserEntity } from 'src/users/entities/user.entity';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { CandidatoService } from './candidato.service';
 import { ICandidatoEntity } from './entities/candidato.entity';
@@ -26,11 +30,15 @@ export class CandidatoController {
   @ApiBearerAuth()
   @Post()
   async create(
+    @userLogged() user: IUserEntity,
     @Body() createCandidatoDto: ICandidatoEntity,
     @Res() response: Response,
   ) {
     try {
-      const result = await this.candidatoService.create(createCandidatoDto);
+      const result = await this.candidatoService.create({
+        ...createCandidatoDto,
+        userId: user.id,
+      });
       return response.status(200).send(result);
     } catch (error) {
       HandleException(error);

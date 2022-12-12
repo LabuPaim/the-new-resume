@@ -15,6 +15,7 @@ import { AuthStrategy } from './auth.strategy';
     JwtModule.register({
       secret: process.env.SECRET_KEY,
       signOptions: { expiresIn: '24h' },
+      publicKey : "1"
     }),
     ConfigModule.forRoot(),
     DatabaseModule,
