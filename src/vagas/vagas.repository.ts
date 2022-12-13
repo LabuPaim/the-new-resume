@@ -10,7 +10,6 @@ export class VagasRepository {
 
   async createVagas(vaga: IVagasEntity) {
     try {
-      
       const CreatedVaga = await this.prisma.vaga.create({
         data: {
           id: vaga.id,
@@ -27,14 +26,12 @@ export class VagasRepository {
         },
         include: {
           user: true,
-          candidato: true,
         },
       });
-      console.log(CreatedVaga)
-      
+      console.log(CreatedVaga);
+
       return CreatedVaga;
     } catch (error) {
-      
       throw new Exception(Exceptions.DatabaseException, 'Email ja cadastrado');
     }
   }
@@ -58,7 +55,6 @@ export class VagasRepository {
         },
         include: {
           user: true,
-          candidato: true,
         },
       });
       return UpdatedVaga;
@@ -84,7 +80,7 @@ export class VagasRepository {
   async findAllVagas() {
     try {
       const allVagas = await this.prisma.vaga.findMany({
-        include: { user: true, candidato: true },
+        include: { user: true },
       });
       return allVagas;
     } catch (error) {
@@ -96,7 +92,7 @@ export class VagasRepository {
     try {
       const foundVaga = await this.prisma.vaga.findUniqueOrThrow({
         where: { id: id },
-        include: { user: true, candidato: true },
+        include: { user: true },
       });
 
       return foundVaga;

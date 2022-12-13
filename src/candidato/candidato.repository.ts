@@ -30,7 +30,6 @@ export class CandidatoRepository {
         },
         include: {
           user: true,
-          vaga: true,
           links: true,
           experiencia: true,
           formacao: true,
@@ -66,7 +65,7 @@ export class CandidatoRepository {
         },
         include: {
           user: true,
-          vaga: true,
+
           links: true,
           experiencia: true,
           formacao: true,
@@ -97,7 +96,7 @@ export class CandidatoRepository {
       const allCandidatos = await this.prisma.candidato.findMany({
         include: {
           user: true,
-          vaga: true,
+
           links: true,
           experiencia: true,
           formacao: true,
@@ -115,7 +114,7 @@ export class CandidatoRepository {
         where: { id: id },
         include: {
           user: true,
-          vaga: true,
+
           links: true,
           experiencia: true,
           formacao: true,

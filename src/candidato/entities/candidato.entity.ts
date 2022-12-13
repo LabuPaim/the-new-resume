@@ -9,7 +9,6 @@ export interface ICandidatoEntity extends CreateCandidatoDto {
   habilidades?: Habilidades[];
 
   stack?: Stack[];
-  vaga?: Vaga[];
   links?: Links[];
   experiencia?: Experiencia[];
   formacao?: Formacao[];

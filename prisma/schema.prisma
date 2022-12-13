@@ -41,7 +41,6 @@ model Candidato {
   contratos   Contratos[]
   office      Office[]
   deficiencia Boolean?
-  vaga        Vaga[]
   links       Links[]
   experiencia Experiencia[]
   formacao    Formacao[]
@@ -57,7 +56,6 @@ model Empresa {
   descricao String?
   cidade    String
   estado    String
-  vaga      Vaga[]
   links     Links[]
 }
 
@@ -65,10 +63,6 @@ model Vaga {
   id          String        @id @unique
   userId      String
   user        User          @relation(fields: [userId], references: [id])
-  empresaId   String
-  empresa     Empresa       @relation(fields: [empresaId], references: [id])
-  candidatoId String
-  candidato   Candidato     @relation(fields: [candidatoId], references: [id])
   stack       Stack
   nivel       Nivel
   descricao   String?

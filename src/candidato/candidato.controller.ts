@@ -35,18 +35,23 @@ export class CandidatoController {
     @Res() response: Response,
   ) {
     try {
-      if (createCandidatoDto.user.id === user.id) {
-        if (user.role == Role.candidato) {
+      console.log(createCandidatoDto );
+      if (user.role === Role.candidato) {
+        if (createCandidatoDto.user.id === user.id) {
           const result = await this.candidatoService.create(
             createCandidatoDto,
             user.id,
-          );
-          return response.status(200).send(result);
+            );
+            return response.status(200).send(result);
+          } else {
+          return response
+            .status(201)
+            .send({ mensagem: 'O usuário só pode ter apenas um perfil' });
+          }
         } else {
-          return { mensagem: 'O usuário não é um dandidato' };
-        }
-      } else {
-        return { mensagem: 'O usuário só pode ter apenas um perfil' };
+          return response
+          .status(201)
+          .send({ mensagem: 'O usuário não é um dandidato' });
       }
     } catch (error) {
       HandleException(error);

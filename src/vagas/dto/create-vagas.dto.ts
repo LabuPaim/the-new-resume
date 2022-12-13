@@ -8,15 +8,14 @@ import {
   Nivel,
   Office,
   Stack,
+  User,
 } from '@prisma/client';
 import { IsEnum, ValidateNested } from 'class-validator';
 
 export class CreateVagasDto {
   @ApiProperty()
   @ValidateNested()
-  user: Empresa;
-
-  // candidato: Candidato;
+  user: User;
 
   @ApiProperty()
   descricao?: string;

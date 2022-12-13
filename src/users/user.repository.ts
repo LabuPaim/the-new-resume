@@ -17,6 +17,11 @@ export class UserRepository {
           password: user.password,
           role: user.role,
         },
+        include:{
+          empresa: true,
+          candidato: true,
+          Vaga: true,
+        }
       });
       return CreatedUser;
     } catch (error) {
