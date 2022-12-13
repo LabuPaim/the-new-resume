@@ -4,6 +4,7 @@ import { CandidatoModule } from './candidato/candidato.module';
 import { UsersModule } from './users/users.module';
 import { EmpresaModule } from './empresa/empresa.module';
 import { AuthModule } from './auth/auth.module';
+import { RedirectModule } from './redirect/redirect.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     CandidatoModule,
     EmpresaModule,
+    RedirectModule,
   ],
 })
 export class AppModule {}
