@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
+import { CreateEmpresaDto } from './dto/create-empresa.dto';
 import { EmpresaRepository } from './empresa.repository';
 import { IEmpresaEntity } from './entities/empresa.entity';
 
@@ -7,9 +8,12 @@ import { IEmpresaEntity } from './entities/empresa.entity';
 export class EmpresaService {
   constructor(private readonly empresa: EmpresaRepository) {}
 
-  async create(createEmpresaDto: IEmpresaEntity) {
+  async create(createEmpresaDto: CreateEmpresaDto, id: string) {
     const EmpresaEntity = { ...createEmpresaDto, id: randomUUID() };
-    const createdEmpresa = await this.empresa.createEmpresa(EmpresaEntity);
+    const createdEmpresa = await this.empresa.createEmpresa({
+      ...EmpresaEntity,
+      userId: id,
+    });
     return createdEmpresa;
   }
 

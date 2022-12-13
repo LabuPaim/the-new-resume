@@ -34,7 +34,7 @@ export class EmpresaRepository {
     }
   }
 
-  async updateEmpresa(empresa: UpdateEmpresaDto): Promise<IEmpresaEntity> {
+  async updateEmpresa(empresa: IEmpresaEntity): Promise<IEmpresaEntity> {
     try {
       const UpdatedEmpresa = await this.prisma.empresa.update({
         where: { id: empresa.id },
@@ -75,7 +75,9 @@ export class EmpresaRepository {
 
   async findAllEmpresa() {
     try {
-      const allEmpresa = await this.prisma.empresa.findMany();
+      const allEmpresa = await this.prisma.empresa.findMany({
+        include: { user: true, vaga: true, links: true },
+      });
       return allEmpresa;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException);
@@ -86,6 +88,7 @@ export class EmpresaRepository {
     try {
       const foundEmpresa = await this.prisma.empresa.findUniqueOrThrow({
         where: { id: id },
+        include: { user: true, vaga: true, links: true },
       });
 
       return foundEmpresa;

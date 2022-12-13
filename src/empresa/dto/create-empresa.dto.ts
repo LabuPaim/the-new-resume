@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Links, User, Vaga } from '@prisma/client';
+import { User } from '@prisma/client';
 import {
-  IsArray,
-  IsDataURI,
   IsString,
   MaxLength,
   MinLength,
@@ -10,10 +8,6 @@ import {
 } from 'class-validator';
 
 export class CreateEmpresaDto {
-  @ApiProperty()
-  @IsString()
-  userId: string;
-
   @ApiProperty()
   @ValidateNested()
   user: User;
@@ -46,13 +40,4 @@ export class CreateEmpresaDto {
   @ApiProperty()
   @IsString()
   descricao?: string;
-
-  @ApiProperty()
-  @IsArray()
-  vaga?: Vaga[];
-
-  @ApiProperty()
-  @IsArray()
-  @IsDataURI()
-  links?: Links[];
 }

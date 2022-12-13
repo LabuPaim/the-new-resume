@@ -16,6 +16,9 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
 import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { userLogged } from 'src/auth/decorators/user-logged.decorator';
+import { IUserEntity } from 'src/users/entities/user.entity';
+import { CreateEmpresaDto } from './dto/create-empresa.dto';
 
 @Controller('empresa')
 @ApiTags('Empresas')
@@ -26,11 +29,15 @@ export class EmpresaController {
   @ApiBearerAuth()
   @Post()
   async create(
-    @Body() createEmpresaDto: IEmpresaEntity,
+    @userLogged() user: IUserEntity,
+    @Body() createEmpresaDto: CreateEmpresaDto,
     @Res() response: Response,
   ) {
     try {
-      const result = await this.empresaService.create(createEmpresaDto);
+      const result = await this.empresaService.create(
+        createEmpresaDto,
+        user.id,
+      );
       return response.status(200).send(result);
     } catch (error) {
       HandleException(error);

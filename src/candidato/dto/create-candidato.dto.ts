@@ -34,7 +34,6 @@ export class CreateCandidatoDto {
   nome: string;
 
   @ApiProperty()
-  @IsDate()
   nascimento: string;
 
   @ApiProperty()
@@ -63,47 +62,12 @@ export class CreateCandidatoDto {
   descricao?: string;
 
   @ApiProperty()
-  @IsArray()
-  @IsEnum(Stack)
-  stack?: Stack[];
-
-  @ApiProperty()
   @IsEnum(Nivel)
-  nivel?: Nivel;
-
-  @ApiProperty()
-  @IsArray()
-  @IsEnum(Habilidades)
-  habilidades?: Habilidades[];
-
-  @ApiProperty()
-  @IsArray()
-  @IsEnum(Contratos)
-  contratos?: Contratos[];
-
-  @ApiProperty()
-  @IsArray()
-  @IsEnum(Office)
-  office?: Office[];
+  nivel?: Nivel;  
 
   @ApiProperty()
   @IsBoolean()
   deficiencia?: boolean;
 
-  @ApiProperty()
-  @IsArray()
-  vaga?: Vaga[];
-
-  @ApiProperty()
-  @IsArray()
-  @IsDataURI()
-  links?: Links[];
-
-  @ApiProperty()
-  @IsArray()
-  experiencia?: Experiencia[];
-
-  @ApiProperty()
-  @IsArray()
-  formacao?: Formacao[];
+ 
 }
