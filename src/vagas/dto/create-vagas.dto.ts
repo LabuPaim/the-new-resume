@@ -8,23 +8,20 @@ import {
   Office,
   Stack,
 } from '@prisma/client';
-import { IsString, ValidateNested } from 'class-validator';
+import { ValidateNested } from 'class-validator';
 
 export class CreateVagasDto {
   @ApiProperty()
   @ValidateNested()
   user: Empresa;
-
+  
   @ApiProperty()
-  @IsString()
-  descricao?: string;
-
-  @ApiProperty()
-  @IsString()
   formacao: string[];
 
   @ApiProperty()
-  @IsString()
+  descricao?: string;
+
+  @ApiProperty()
   experiencia: string[];
 
   @ApiProperty()

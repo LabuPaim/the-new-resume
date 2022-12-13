@@ -29,6 +29,7 @@ export class VagasRepository {
           candidato: true,
         },
       });
+      console.log("Creating")
       return CreatedVaga;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException, 'Email ja cadastrado');

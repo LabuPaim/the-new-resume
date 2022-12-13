@@ -26,12 +26,14 @@ export class VagasController {
     @Res() response: Response,
   ) {
     try {
-      if (createVagasDto.user.id === user.id) {
+      
+      if (user.id) {
+        
         if (user.role == Role.empresa) {
           const result = await this.vagasService.create(
             createVagasDto,
             user.id,
-          );
+            );
           return response.status(200).send(result);
         } else {
           return { mensagem: 'O usuário não é uma empresa' };
