@@ -1,34 +1,96 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
 import { VagasService } from './vagas.service';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { IUserEntity } from 'src/users/entities/user.entity';
+import { userLogged } from 'src/auth/decorators/user-logged.decorator';
+import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { AuthGuard } from '@nestjs/passport';
+import { UseGuards } from '@nestjs/common/decorators';
 import { CreateVagasDto } from './dto/create-vagas.dto';
-import { UpdateVagasDto } from './dto/update-vagas.dto';
+import { Role } from '@prisma/client';
+import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
+import { IVagasEntity } from './entities/vagas.entity';
 
 @Controller('vagas')
+@ApiTags('Vagas')
 export class VagasController {
   constructor(private readonly vagasService: VagasService) {}
 
+  @UseGuards(AuthGuard(), IsUserAuthorization)
+  @ApiBearerAuth()
   @Post()
-  create(@Body() createVagasDto: CreateVagasDto) {
-    return this.vagasService.create(createVagasDto);
+  async create(
+    @userLogged() user: IUserEntity,
+    @Body() createVagasDto: CreateVagasDto,
+    @Res() response: Response,
+  ) {
+    try {
+      if (createVagasDto.user.id === user.id) {
+        if (user.role == Role.empresa) {
+          const result = await this.vagasService.create(
+            createVagasDto,
+            user.id,
+          );
+          return response.status(200).send(result);
+        } else {
+          return { mensagem: 'O usuário não é uma empresa' };
+        }
+      } else {
+        return { mensagem: 'O usuário só pode ter apenas um perfil' };
+      }
+    } catch (error) {
+      HandleException(error);
+    }
   }
 
-  @Get()
-  findAll() {
-    return this.vagasService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vagasService.findOne(+id);
-  }
-
+  @UseGuards(AuthGuard(), IsUserAuthorization)
+  @ApiBearerAuth()
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVagasDto: UpdateVagasDto) {
-    return this.vagasService.update(+id, updateVagasDto);
+  async update(
+    @Body() updateVagaDto: IVagasEntity,
+    @Param('id') id: string,
+  ) {
+    try {
+      const result = { ...updateVagaDto, id: id };
+      return await this.vagasService.update(result);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 
+  @UseGuards(AuthGuard(), IsUserAuthorization)
+  @ApiBearerAuth()
+  @Get()
+  async findAll(@Res() response: Response) {
+    try {
+      const result = await this.vagasService.findAll();
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
+  }
+
+  @UseGuards(AuthGuard(), IsUserAuthorization)
+  @ApiBearerAuth()
+  @Get(':id')
+  async findOne(@Param('id') id: string, @Res() response: Response) {
+    try {
+      const result = await this.vagasService.findOne(id);
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
+  }
+
+  @UseGuards(AuthGuard(), IsUserAuthorization)
+  @ApiBearerAuth()
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vagasService.remove(+id);
+  async remove(@Param('id') id: string, @Res() response: Response) {
+    try {
+      const result = await this.vagasService.remove(id);
+      return response.status(200).send(result);
+    } catch (error) {
+      HandleException(error);
+    }
   }
 }

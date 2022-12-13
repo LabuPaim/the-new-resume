@@ -1,26 +1,36 @@
 import { Injectable } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { CreateVagasDto } from './dto/create-vagas.dto';
 import { UpdateVagasDto } from './dto/update-vagas.dto';
+import { IVagasEntity } from './entities/vagas.entity';
+import { VagasRepository } from './vagas.repository';
 
 @Injectable()
 export class VagasService {
-  create(createVagasDto: CreateVagasDto) {
-    return 'This action adds a new vagas';
+  constructor(private readonly vagas: VagasRepository) {}
+
+  async create(createVagaDto: CreateVagasDto, id: string) {
+    const VagaEntity = { ...createVagaDto, id: randomUUID() };
+    const createdVaga = await this.vagas.createVagas({
+      ...VagaEntity,
+      userId: id,
+    });
+    return createdVaga;
   }
 
-  findAll() {
-    return `This action returns all vagas`;
+  async update(updateVagaDto: IVagasEntity): Promise<IVagasEntity> {
+    return this.vagas.updateVaga(updateVagaDto);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} vagas`;
+  async findAll() {
+    return await this.vagas.findAllVagas();
   }
 
-  update(id: number, updateVagasDto: UpdateVagasDto) {
-    return `This action updates a #${id} vagas`;
+  async remove(id: string) {
+    return await this.vagas.deleteVaga(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vagas`;
+  async findOne(id: string) {
+    return await this.vagas.findVagaById(id);
   }
 }
