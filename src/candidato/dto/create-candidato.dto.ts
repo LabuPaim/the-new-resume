@@ -1,8 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  Nivel,
-  User,
-} from '@prisma/client';
+import { Nivel, User } from '@prisma/client';
 import {
   IsBoolean,
   IsEnum,
@@ -13,7 +10,6 @@ import {
 } from 'class-validator';
 
 export class CreateCandidatoDto {
-
   @ApiProperty()
   @ValidateNested()
   user: User;
@@ -52,11 +48,9 @@ export class CreateCandidatoDto {
 
   @ApiProperty()
   @IsEnum(Nivel)
-  nivel?: Nivel;  
+  nivel?: Nivel;
 
   @ApiProperty()
   @IsBoolean()
   deficiencia?: boolean;
-
- 
 }

@@ -5,9 +5,6 @@ export interface IVagasEntity extends CreateVagasDto {
   id: string;
   userId: string;
 
-  // formacao?: string[];
-  // experiencia?: string[];
-
   candidato?: Candidato[];
   empresa?: Empresa[];
   habilidades?: Habilidades[];

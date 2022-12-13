@@ -35,9 +35,7 @@ export class VagasController {
     @Res() response: Response,
   ) {
     try {
-      
       if (user.role === Role.empresa) {
-        console.log(user);
         if ('empresa' in user) {
           const result = await this.vagasService.create(
             createVagasDto,
@@ -45,7 +43,6 @@ export class VagasController {
           );
           return response.status(200).send(result);
         } else {
-          console.log('else');
           return response
             .status(201)
             .send({ mensagem: 'O usuário ainda não tem um perfil' });

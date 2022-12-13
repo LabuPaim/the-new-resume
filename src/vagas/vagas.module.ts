@@ -6,8 +6,10 @@ import { PassportModule } from '@nestjs/passport';
 import { VagasRepository } from './vagas.repository';
 
 @Module({
-  imports: [DatabaseModule,
-    PassportModule.register({ defaultStrategy: 'jwt' }),],
+  imports: [
+    DatabaseModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+  ],
   controllers: [VagasController],
   providers: [VagasService, VagasRepository],
   exports: [VagasService],

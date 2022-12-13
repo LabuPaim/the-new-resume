@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { CreateVagasDto } from './dto/create-vagas.dto';
-import { UpdateVagasDto } from './dto/update-vagas.dto';
 import { IVagasEntity } from './entities/vagas.entity';
 import { VagasRepository } from './vagas.repository';
 

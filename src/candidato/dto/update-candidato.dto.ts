@@ -9,5 +9,5 @@ export class UpdateCandidatoDto extends PartialType(CreateCandidatoDto) {
 
   @ApiProperty()
   @IsString()
-  userId: string
+  userId: string;
 }
