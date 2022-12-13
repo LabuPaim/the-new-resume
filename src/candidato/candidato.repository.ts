@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Contratos, Habilidades, Nivel, Office, Stack } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
-import { UpdateCandidatoDto } from './dto/update-candidato.dto';
 import { ICandidatoEntity } from './entities/candidato.entity';
 
 @Injectable()

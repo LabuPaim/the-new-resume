@@ -1,4 +1,4 @@
-import { Links, User, Vaga } from '@prisma/client';
+import { Links, Vaga } from '@prisma/client';
 import { CreateEmpresaDto } from '../dto/create-empresa.dto';
 
 export interface IEmpresaEntity extends CreateEmpresaDto {

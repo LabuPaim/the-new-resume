@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Res } from '@nestjs/common/decorators/http/route-params.decorator';
 import { ApiTags } from '@nestjs/swagger';
 

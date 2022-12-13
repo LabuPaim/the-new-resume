@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
-import { UpdateEmpresaDto } from './dto/update-empresa.dto';
 import { IEmpresaEntity } from './entities/empresa.entity';
 
 @Injectable()

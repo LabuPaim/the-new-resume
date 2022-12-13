@@ -14,8 +14,7 @@ import { AuthStrategy } from './auth.strategy';
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: process.env.SECRET_KEY,
-      signOptions: { expiresIn: '24h' },
-      publicKey : "1"
+      signOptions: { expiresIn: '24h' }
     }),
     ConfigModule.forRoot(),
     DatabaseModule,

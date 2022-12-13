@@ -9,7 +9,6 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Role } from '@prisma/client';

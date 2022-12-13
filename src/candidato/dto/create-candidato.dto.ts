@@ -1,21 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  Contratos,
-  Experiencia,
-  Formacao,
-  Habilidades,
-  Links,
   Nivel,
-  Office,
-  Stack,
   User,
-  Vaga,
 } from '@prisma/client';
 import {
-  IsArray,
   IsBoolean,
-  IsDataURI,
-  IsDate,
   IsEnum,
   IsString,
   MaxLength,
