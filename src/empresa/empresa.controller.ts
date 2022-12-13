@@ -19,6 +19,7 @@ import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 import { userLogged } from 'src/auth/decorators/user-logged.decorator';
 import { IUserEntity } from 'src/users/entities/user.entity';
 import { CreateEmpresaDto } from './dto/create-empresa.dto';
+import { Role } from '@prisma/client';
 
 @Controller('empresa')
 @ApiTags('Empresas')
@@ -34,11 +35,19 @@ export class EmpresaController {
     @Res() response: Response,
   ) {
     try {
-      const result = await this.empresaService.create(
-        createEmpresaDto,
-        user.id,
-      );
-      return response.status(200).send(result);
+      if (createEmpresaDto.user.id === user.id) {
+        if (user.role == Role.empresa) {
+          const result = await this.empresaService.create(
+            createEmpresaDto,
+            user.id,
+          );
+          return response.status(200).send(result);
+        } else {
+          return { mensagem: 'O usuário não é uma empresa' };
+        }
+      } else {
+        return { mensagem: 'O usuário só pode ter apenas um perfil' };
+      }
     } catch (error) {
       HandleException(error);
     }

@@ -38,7 +38,6 @@ export class CandidatoRepository {
           formacao: true,
         },
       });
-      console.log('CreatedCandidato');
       return CreatedCandidato;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException, 'Email ja cadastrado');

@@ -12,6 +12,7 @@ import {
 import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Role } from '@prisma/client';
 import { Response } from 'express';
 import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
 import { userLogged } from 'src/auth/decorators/user-logged.decorator';
@@ -35,8 +36,19 @@ export class CandidatoController {
     @Res() response: Response,
   ) {
     try {
-      const result = await this.candidatoService.create(createCandidatoDto, user.id);
-      return response.status(200).send(result);
+      if (createCandidatoDto.user.id === user.id) {
+        if (user.role == Role.candidato) {
+          const result = await this.candidatoService.create(
+            createCandidatoDto,
+            user.id,
+          );
+          return response.status(200).send(result);
+        } else {
+          return { mensagem: 'O usuário não é um dandidato' };
+        }
+      } else {
+        return { mensagem: 'O usuário só pode ter apenas um perfil' };
+      }
     } catch (error) {
       HandleException(error);
     }
