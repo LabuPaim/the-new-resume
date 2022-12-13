@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Res,
+} from '@nestjs/common';
 import { VagasService } from './vagas.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { IUserEntity } from 'src/users/entities/user.entity';
@@ -26,21 +35,25 @@ export class VagasController {
     @Res() response: Response,
   ) {
     try {
-      
-      if (user.id) {
-        console.log(user)
-        
-        if (user.role == Role.empresa) {
+      if (user.role === Role.empresa) {
+        const existe = [null, undefined];
+        if (existe.includes(!user.empresa)) {
           const result = await this.vagasService.create(
             createVagasDto,
             user.id,
-            );
+          );
           return response.status(200).send(result);
         } else {
-          return { mensagem: 'O usuário não é uma empresa' };
+          return response
+            .status(201)
+            .send({ mensagem: 'O usuário ainda não tem um perfil' });
         }
       } else {
-        return { mensagem: 'O usuário só pode ter apenas um perfil' };
+        return response
+          .status(201)
+          .send({
+            mensagem: 'O usuário não tem permissão para criar uma vaga',
+          });
       }
     } catch (error) {
       HandleException(error);
@@ -50,10 +63,7 @@ export class VagasController {
   @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Patch(':id')
-  async update(
-    @Body() updateVagaDto: IVagasEntity,
-    @Param('id') id: string,
-  ) {
+  async update(@Body() updateVagaDto: IVagasEntity, @Param('id') id: string) {
     try {
       const result = { ...updateVagaDto, id: id };
       return await this.vagasService.update(result);

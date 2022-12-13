@@ -16,7 +16,7 @@ model User {
   updatedAt DateTime    @updatedAt
   candidato Candidato[]
   empresa   Empresa[]
-  Vaga      Vaga[]
+  vaga      Vaga[]
 }
 
 enum Role {
@@ -57,12 +57,15 @@ model Empresa {
   cidade    String
   estado    String
   links     Links[]
+  vaga      Vaga?   @relation(fields: [vagaId], references: [id])
+  vagaId    String?
 }
 
 model Vaga {
   id          String        @id @unique
   userId      String
   user        User          @relation(fields: [userId], references: [id])
+  empresa     Empresa[]
   stack       Stack
   nivel       Nivel
   descricao   String?

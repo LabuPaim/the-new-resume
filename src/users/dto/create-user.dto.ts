@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Candidato, Empresa } from '@prisma/client';
+import { Candidato, Empresa, Vaga } from '@prisma/client';
 import {
   IsAlphanumeric,
   IsEmail,
@@ -24,6 +24,10 @@ export class CreateUserDto {
 
   @ApiProperty()
   candidato?: Candidato[];
+
   @ApiProperty()
   empresa?: Empresa[];
+
+  @ApiProperty()
+  Vaga?: Vaga[];
 }
