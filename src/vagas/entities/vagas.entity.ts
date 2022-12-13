@@ -1,4 +1,4 @@
-import { Candidato, Habilidades } from '@prisma/client';
+import { Candidato, Empresa, Habilidades } from '@prisma/client';
 import { CreateVagasDto } from '../dto/create-vagas.dto';
 
 export interface IVagasEntity extends CreateVagasDto {
@@ -9,5 +9,6 @@ export interface IVagasEntity extends CreateVagasDto {
   // experiencia?: string[];
 
   candidato?: Candidato[];
+  empresa?: Empresa[];
   habilidades?: Habilidades[];
 }

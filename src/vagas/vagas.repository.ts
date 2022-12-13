@@ -26,9 +26,9 @@ export class VagasRepository {
         },
         include: {
           user: true,
+          empresa: true,
         },
       });
-      console.log(CreatedVaga);
 
       return CreatedVaga;
     } catch (error) {
@@ -55,6 +55,7 @@ export class VagasRepository {
         },
         include: {
           user: true,
+          empresa: true,
         },
       });
       return UpdatedVaga;
@@ -67,6 +68,10 @@ export class VagasRepository {
     try {
       const deletedVaga = await this.prisma.vaga.delete({
         where: { id: id },
+        include: {
+          user: true,
+          empresa: true,
+        },
       });
       return deletedVaga;
     } catch (error) {
@@ -80,7 +85,7 @@ export class VagasRepository {
   async findAllVagas() {
     try {
       const allVagas = await this.prisma.vaga.findMany({
-        include: { user: true },
+        include: { user: true, empresa: true },
       });
       return allVagas;
     } catch (error) {
@@ -92,7 +97,7 @@ export class VagasRepository {
     try {
       const foundVaga = await this.prisma.vaga.findUniqueOrThrow({
         where: { id: id },
-        include: { user: true },
+        include: { user: true, empresa: true },
       });
 
       return foundVaga;

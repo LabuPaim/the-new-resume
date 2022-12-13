@@ -20,7 +20,7 @@ export class UserRepository {
         include: {
           empresa: true,
           candidato: true,
-          Vaga: true,
+          vaga: true,
         },
       });
       return CreatedUser;
@@ -38,7 +38,7 @@ export class UserRepository {
           password: user.password,
           role: user.role,
         },
-        include: { candidato: true, empresa: true, Vaga: true },
+        include: { candidato: true, empresa: true, vaga: true },
       });
       return UpdatedUser;
     } catch (error) {
@@ -63,7 +63,7 @@ export class UserRepository {
   async findAllUsers(): Promise<IUserEntity[]> {
     try {
       const allUsers = await this.prisma.user.findMany({
-        include: { candidato: true, empresa: true, Vaga: true },
+        include: { candidato: true, empresa: true, vaga: true },
       });
       return allUsers;
     } catch (error) {
@@ -75,7 +75,7 @@ export class UserRepository {
     try {
       const foundUser = await this.prisma.user.findUniqueOrThrow({
         where: { id: id },
-        include: { candidato: true, empresa: true, Vaga: true },
+        include: { candidato: true, empresa: true, vaga: true },
       });
 
       return foundUser;

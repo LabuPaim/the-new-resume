@@ -24,6 +24,7 @@ export class EmpresaRepository {
         include: {
           user: true,
           links: true,
+          vaga: true,
         },
       });
       return CreatedEmpresa;
@@ -73,7 +74,7 @@ export class EmpresaRepository {
   async findAllEmpresa() {
     try {
       const allEmpresa = await this.prisma.empresa.findMany({
-        include: { user: true, links: true },
+        include: { user: true, links: true, vaga: true },
       });
       return allEmpresa;
     } catch (error) {
@@ -85,7 +86,7 @@ export class EmpresaRepository {
     try {
       const foundEmpresa = await this.prisma.empresa.findUniqueOrThrow({
         where: { id: id },
-        include: { user: true, links: true },
+        include: { user: true, links: true, vaga: true },
       });
 
       return foundEmpresa;

@@ -35,25 +35,25 @@ export class VagasController {
     @Res() response: Response,
   ) {
     try {
+      
       if (user.role === Role.empresa) {
-        const existe = [null, undefined];
-        if (existe.includes(!user.empresa)) {
+        console.log(user);
+        if ('empresa' in user) {
           const result = await this.vagasService.create(
             createVagasDto,
             user.id,
           );
           return response.status(200).send(result);
         } else {
+          console.log('else');
           return response
             .status(201)
             .send({ mensagem: 'O usuário ainda não tem um perfil' });
         }
       } else {
-        return response
-          .status(201)
-          .send({
-            mensagem: 'O usuário não tem permissão para criar uma vaga',
-          });
+        return response.status(201).send({
+          mensagem: 'O usuário não tem permissão para criar uma vaga',
+        });
       }
     } catch (error) {
       HandleException(error);

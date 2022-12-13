@@ -29,5 +29,5 @@ export class CreateUserDto {
   empresa?: Empresa[];
 
   @ApiProperty()
-  Vaga?: Vaga[];
+  vaga?: Vaga[];
 }
