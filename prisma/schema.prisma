@@ -16,6 +16,7 @@ model User {
   updatedAt DateTime    @updatedAt
   candidato Candidato[]
   empresa   Empresa[]
+  Vaga      Vaga[]
 }
 
 enum Role {
@@ -63,8 +64,11 @@ model Empresa {
 model Vaga {
   id          String        @id @unique
   userId      String
-  user        Empresa       @relation(fields: [userId], references: [id])
-  candidato   Candidato[]
+  user        User          @relation(fields: [userId], references: [id])
+  empresaId   String
+  empresa     Empresa       @relation(fields: [empresaId], references: [id])
+  candidatoId String
+  candidato   Candidato     @relation(fields: [candidatoId], references: [id])
   stack       Stack
   nivel       Nivel
   descricao   String?
