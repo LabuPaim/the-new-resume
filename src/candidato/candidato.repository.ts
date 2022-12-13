@@ -97,7 +97,15 @@ export class CandidatoRepository {
 
   async findAllCandidatos() {
     try {
-      const allCandidatos = await this.prisma.candidato.findMany();
+      const allCandidatos = await this.prisma.candidato.findMany({
+        include: {
+          user: true,
+          vaga: true,
+          links: true,
+          experiencia: true,
+          formacao: true,
+        },
+      });
       return allCandidatos;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException);
@@ -108,6 +116,13 @@ export class CandidatoRepository {
     try {
       const foundCandidato = await this.prisma.candidato.findUniqueOrThrow({
         where: { id: id },
+        include: {
+          user: true,
+          vaga: true,
+          links: true,
+          experiencia: true,
+          formacao: true,
+        },
       });
 
       return foundCandidato;
