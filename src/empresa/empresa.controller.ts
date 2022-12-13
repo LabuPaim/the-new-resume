@@ -76,10 +76,10 @@ export class EmpresaController {
   @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get()
-  async findAll(@Res() response: Response) {
+  async findAll(@Res() response: Response, @userLogged() user: IUserEntity) {
     try {
-      const result = await this.empresaService.findAll();
-      return response.status(200).send(result);
+      
+      return response.status(200).send(user.empresa);
     } catch (error) {
       HandleException(error);
     }

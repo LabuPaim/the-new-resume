@@ -50,7 +50,7 @@ export class UserRepository {
     try {
       const deletedUser = await this.prisma.user.delete({
         where: { id: id },
-        include:{empresa: true}
+        include: { empresa: true, candidato: true, vaga: true },
       });
       return deletedUser;
     } catch (error) {
@@ -89,7 +89,7 @@ export class UserRepository {
     try {
       const foundUser = await this.prisma.user.findUniqueOrThrow({
         where: { email: email },
-        include:{empresa: true}
+        include: { empresa: true, candidato: true, vaga: true },
       });
       return foundUser;
     } catch (err) {

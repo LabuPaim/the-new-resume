@@ -76,10 +76,9 @@ export class CandidatoController {
   @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get()
-  async findAll(@Res() response: Response) {
+  async findAll(@Res() response: Response, @userLogged() user: IUserEntity) {
     try {
-      const result = await this.candidatoService.findAll();
-      return response.status(200).send(result);
+      return response.status(200).send(user.candidato);
     } catch (error) {
       HandleException(error);
     }
