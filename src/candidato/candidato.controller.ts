@@ -35,21 +35,21 @@ export class CandidatoController {
     @Res() response: Response,
   ) {
     try {
-      console.log(createCandidatoDto );
       if (user.role === Role.candidato) {
-        if (createCandidatoDto.user.id === user.id) {
+        const existe = [null, undefined];
+        if (existe.includes(user.candidato)) {
           const result = await this.candidatoService.create(
             createCandidatoDto,
             user.id,
-            );
-            return response.status(200).send(result);
-          } else {
+          );
+          return response.status(200).send(result);
+        } else {
           return response
             .status(201)
             .send({ mensagem: 'O usuário só pode ter apenas um perfil' });
-          }
-        } else {
-          return response
+        }
+      } else {
+        return response
           .status(201)
           .send({ mensagem: 'O usuário não é um dandidato' });
       }

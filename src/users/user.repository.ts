@@ -17,11 +17,11 @@ export class UserRepository {
           password: user.password,
           role: user.role,
         },
-        include:{
+        include: {
           empresa: true,
           candidato: true,
           Vaga: true,
-        }
+        },
       });
       return CreatedUser;
     } catch (error) {
@@ -33,7 +33,12 @@ export class UserRepository {
     try {
       const UpdatedUser = await this.prisma.user.update({
         where: { id: user.id },
-        data: user,
+        data: {
+          email: user.email,
+          password: user.password,
+          role: user.role,
+        },
+        include: { candidato: true, empresa: true, Vaga: true },
       });
       return UpdatedUser;
     } catch (error) {
@@ -57,7 +62,9 @@ export class UserRepository {
 
   async findAllUsers(): Promise<IUserEntity[]> {
     try {
-      const allUsers = await this.prisma.user.findMany();
+      const allUsers = await this.prisma.user.findMany({
+        include: { candidato: true, empresa: true, Vaga: true },
+      });
       return allUsers;
     } catch (error) {
       throw new Exception(Exceptions.DatabaseException);
@@ -68,6 +75,7 @@ export class UserRepository {
     try {
       const foundUser = await this.prisma.user.findUniqueOrThrow({
         where: { id: id },
+        include: { candidato: true, empresa: true, Vaga: true },
       });
 
       return foundUser;

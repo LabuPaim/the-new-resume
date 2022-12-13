@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Candidato } from '@prisma/client';
 import {
   IsAlphanumeric,
   IsEmail,
@@ -20,4 +21,7 @@ export class CreateUserDto {
     message: 'Senha muito curta, mínimo de 8 dígitos',
   })
   password?: string;
+
+  @ApiProperty()
+  candidato?: Candidato[];
 }
