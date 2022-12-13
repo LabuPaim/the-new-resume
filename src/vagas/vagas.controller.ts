@@ -10,6 +10,7 @@ import { CreateVagasDto } from './dto/create-vagas.dto';
 import { Role } from '@prisma/client';
 import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 import { IVagasEntity } from './entities/vagas.entity';
+import { Response } from 'express';
 
 @Controller('vagas')
 @ApiTags('Vagas')
