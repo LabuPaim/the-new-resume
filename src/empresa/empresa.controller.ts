@@ -35,18 +35,23 @@ export class EmpresaController {
     @Res() response: Response,
   ) {
     try {
-      if (createEmpresaDto.user.id === user.id) {
-        if (user.role == Role.empresa) {
+      if (user.role === Role.empresa) {
+        const existe = [null, undefined];
+        if (existe.includes(user.empresa)) {
           const result = await this.empresaService.create(
             createEmpresaDto,
             user.id,
           );
           return response.status(200).send(result);
         } else {
-          return { mensagem: 'O usuário não é uma empresa' };
+          return response
+            .status(201)
+            .send({ mensagem: 'O usuário só pode ter apenas um perfil' });
         }
       } else {
-        return { mensagem: 'O usuário só pode ter apenas um perfil' };
+        return response
+          .status(201)
+          .send({ mensagem: 'O usuário não é uma empresa' });
       }
     } catch (error) {
       HandleException(error);

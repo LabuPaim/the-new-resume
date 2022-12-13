@@ -47,7 +47,6 @@ export class EmpresaRepository {
         },
         include: {
           user: true,
-
           links: true,
         },
       });
