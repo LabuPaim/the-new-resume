@@ -10,6 +10,7 @@ export class VagasRepository {
 
   async createVagas(vaga: IVagasEntity) {
     try {
+      
       const CreatedVaga = await this.prisma.vaga.create({
         data: {
           id: vaga.id,
@@ -29,9 +30,11 @@ export class VagasRepository {
           candidato: true,
         },
       });
-      console.log("Creating")
+      console.log(CreatedVaga)
+      
       return CreatedVaga;
     } catch (error) {
+      
       throw new Exception(Exceptions.DatabaseException, 'Email ja cadastrado');
     }
   }

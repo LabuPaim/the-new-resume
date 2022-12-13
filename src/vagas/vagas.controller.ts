@@ -28,6 +28,7 @@ export class VagasController {
     try {
       
       if (user.id) {
+        console.log(user)
         
         if (user.role == Role.empresa) {
           const result = await this.vagasService.create(
