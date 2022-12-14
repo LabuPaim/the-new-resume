@@ -25,7 +25,7 @@ enum Role {
 }
 
 model Candidato {
-  id          String        @id @unique
+  id          String        @id
   userId      String
   user        User          @relation(fields: [userId], references: [id])
   nome        String
@@ -47,7 +47,7 @@ model Candidato {
 }
 
 model Empresa {
-  id        String  @id @unique
+  id        String  @id
   userId    String
   user      User    @relation(fields: [userId], references: [id])
   nome      String
@@ -62,7 +62,7 @@ model Empresa {
 }
 
 model Vaga {
-  id          String        @id @unique
+  id          String        @id
   userId      String
   user        User          @relation(fields: [userId], references: [id])
   empresa     Empresa[]
@@ -80,7 +80,7 @@ model Vaga {
 }
 
 model Links {
-  id          String    @id @unique
+  id          String    @id
   candidato   Candidato @relation(fields: [candidatoId], references: [id])
   empresa     Empresa   @relation(fields: [empresaId], references: [id])
   candidatoId String
@@ -92,7 +92,7 @@ model Links {
 }
 
 model Experiencia {
-  id          String        @id @unique
+  id          String        @id
   candidato   Candidato     @relation(fields: [candidatoId], references: [id])
   candidatoId String
   empresa     String?
@@ -105,7 +105,7 @@ model Experiencia {
 }
 
 model Formacao {
-  id          String    @id @unique
+  id          String    @id
   candidato   Candidato @relation(fields: [candidatoId], references: [id])
   candidatoId String
   instituicao String
