@@ -21,13 +21,4 @@ export class CreateUserDto {
     message: 'Senha muito curta, mínimo de 8 dígitos',
   })
   password: string;
-
-  @ApiProperty()
-  candidato?: Candidato[];
-
-  @ApiProperty()
-  empresa?: Empresa[];
-
-  @ApiProperty()
-  vaga?: Vaga[];
 }
