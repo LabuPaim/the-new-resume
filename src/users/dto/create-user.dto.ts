@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Candidato, Empresa, Vaga } from '@prisma/client';
+import { Candidato, Empresa, Role, Vaga } from '@prisma/client';
 import {
   IsAlphanumeric,
   IsEmail,
@@ -16,4 +16,6 @@ export class CreateUserDto {
   @IsAlphanumeric()
   @ApiProperty()
   password: string;
+
+  role: Role
 }

@@ -17,6 +17,7 @@ import { UseGuards } from '@nestjs/common/decorators';
 import { AuthGuard } from '@nestjs/passport';
 import { userLogged } from 'src/auth/decorators/user-logged.decorator';
 import { IsUserAuthorization } from 'src/auth/decorators/is-teacher.decorator';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 @ApiTags('Users')
@@ -24,7 +25,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async create(@Body() createUserDto: IUserEntity, @Res() response: Response) {
+  async create(@Body() createUserDto: CreateUserDto, @Res() response: Response) {
     try {
       const result = await this.usersService.create(createUserDto);
       return response.status(200).send(result);

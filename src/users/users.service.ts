@@ -3,6 +3,7 @@ import { hash } from 'bcrypt';
 import { randomUUID } from 'crypto';
 import { Exception } from 'src/utils/exceptions/exception';
 import { Exceptions } from 'src/utils/exceptions/exceptionsHelper';
+import { CreateUserDto } from './dto/create-user.dto';
 import { IUserEntity } from './entities/user.entity';
 import { UserRepository } from './user.repository';
 
@@ -10,7 +11,7 @@ import { UserRepository } from './user.repository';
 export class UsersService {
   constructor(private readonly users: UserRepository) {}
 
-  async create(createUserDto: IUserEntity) {
+  async create(createUserDto: CreateUserDto) {
     if (createUserDto.password.length <= 7) {
       throw new Exception(
         Exceptions.InvalidData,
