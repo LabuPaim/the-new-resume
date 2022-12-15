@@ -16,6 +16,7 @@ export class CreateUserDto {
   @IsAlphanumeric()
   @ApiProperty()
   password: string;
-
+  
+  @ApiProperty()
   role: Role
 }
