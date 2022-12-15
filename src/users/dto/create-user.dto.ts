@@ -11,7 +11,7 @@ import {
 export class CreateUserDto {
   @ApiProperty()
   @IsEmail()
-  email?: string;
+  email: string;
 
   @ApiProperty()
   @IsString()
@@ -20,14 +20,11 @@ export class CreateUserDto {
   @MinLength(8, {
     message: 'Senha muito curta, mínimo de 8 dígitos',
   })
-  password?: string;
+  password: string;
 
-  @ApiProperty()
   candidato?: Candidato[];
 
-  @ApiProperty()
   empresa?: Empresa[];
 
-  @ApiProperty()
   vaga?: Vaga[];
 }

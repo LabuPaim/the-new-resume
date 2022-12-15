@@ -5,7 +5,7 @@ export interface IUserEntity extends CreateUserDto {
   id: string;
   role: Role;
 
-  candidato: Candidato[];
-  empresa: Empresa[];
-  vaga: Vaga[];
+  candidato?: Candidato[];
+  empresa?: Empresa[];
+  vaga?: Vaga[];
 }
