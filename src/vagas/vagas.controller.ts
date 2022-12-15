@@ -69,17 +69,6 @@ export class VagasController {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
   @UseGuards(AuthGuard(), IsUserAuthorization)
   @ApiBearerAuth()
   @Get()
