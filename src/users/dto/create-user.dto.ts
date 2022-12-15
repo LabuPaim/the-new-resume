@@ -22,9 +22,12 @@ export class CreateUserDto {
   })
   password: string;
 
+  @ApiProperty()
   candidato?: Candidato[];
 
+  @ApiProperty()
   empresa?: Empresa[];
 
+  @ApiProperty()
   vaga?: Vaga[];
 }
