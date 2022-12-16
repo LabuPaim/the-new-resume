@@ -1,5 +1,3 @@
-
-
 <p align="center">
   <img src="public\img\labuPaim-SemFundo.png" width="200" alt="Nest Logo" />
 </p>
@@ -11,7 +9,7 @@
   <a href="https://nodejs.org/en/" target="blank"><img src="public\img\node.png" width="100"  alt="NodeJs Logo" /></a>
   <a href="https://insomnia.rest/" target="blank"><img src="public\img\insomnia.png" width="100"  alt="Insomnia Logo" /></a>
 
-</p>    
+</p>
 
 ## Descrição
 
@@ -28,7 +26,6 @@ $ npm i -g @nestjs/cli
 $ nest new theNewResume
 # Criação das dependências do NestJs onde o nome do projeto é "theNewResume"
 ```
-
 
 ```bash
 $ yarn add @nestjs/swagger
@@ -61,8 +58,18 @@ $ nest g resource
 ```
 
 ```bash
+$ npx prisma generate
+# Para gerar o prisma client e alterar o schema no NodeModule
+```
+
+```bash
+$ npx prisma db push
+# Para enviar a alteração para o banco de dados
+```
+
+```bash
 $ npx prisma migrate dev --name User
-# Criação da tabela no postgres
+# Criação da tabela no postgres sem resetar o DB
 ```
 
 ## Instalação
@@ -99,11 +106,11 @@ $ yarn test:cov
 
 ## Suporte
 
-Nest é um projeto de código aberto licenciado pelo MIT. Se quiser acessar a documentação é só  [clicar aqui](https://docs.nestjs.com/).
+Nest é um projeto de código aberto licenciado pelo MIT. Se quiser acessar a documentação é só [clicar aqui](https://docs.nestjs.com/).
 
 ## Contato
 
 - Author - Victor Paim
 - Linkedin - [@labupaim](https://www.linkedin.com/in/labupaim/)
 - GitHub - [@LabuPaim](https://github.com/LabuPaim)
-- WhatsApp -  +55 (71) 9 8300-6611
+- WhatsApp - +55 (71) 9 8300-6611
