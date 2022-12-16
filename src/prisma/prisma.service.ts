@@ -4,6 +4,7 @@ import {
   OnModuleInit,
 } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { HandleException } from 'src/utils/exceptions/exceptionsHelper';
 
 export class PrismaService
   extends PrismaClient
@@ -17,8 +18,12 @@ export class PrismaService
   }
 
   async enableShutdownHooks(app: INestApplication) {
-    this.$on('beforeExit', async () => {
-      await app.close();
-    });
+    try {
+      this.$on('beforeExit', async () => {
+        await app.close();
+      });
+    } catch (error) {
+      HandleException(error);
+    }
   }
 }
