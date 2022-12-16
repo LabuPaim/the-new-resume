@@ -10,6 +10,7 @@ export class EmpresaRepository {
 
   async createEmpresa(empresa: IEmpresaEntity) {
     try {
+      
       const CreatedEmpresa = await this.prisma.empresa.create({
         data: {
           id: empresa.id,

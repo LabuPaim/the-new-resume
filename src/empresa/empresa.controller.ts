@@ -37,7 +37,8 @@ export class EmpresaController {
     try {
       if (user.role === Role.empresa) {
         const existe = [null, undefined];
-        if (existe.includes(user.empresa)) {
+        if (existe.includes(user.empresa[0])) {
+          console.log("controller")
           const result = await this.empresaService.create(
             createEmpresaDto,
             user.id,

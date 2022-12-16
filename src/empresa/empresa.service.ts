@@ -11,6 +11,7 @@ export class EmpresaService {
 
   async create(createEmpresaDto: CreateEmpresaDto, id: string) {
     try {
+      
       const EmpresaEntity = { ...createEmpresaDto, id: randomUUID() };
       const createdEmpresa = await this.empresa.createEmpresa({
         ...EmpresaEntity,
