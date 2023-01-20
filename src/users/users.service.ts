@@ -29,7 +29,7 @@ export class UsersService {
       const createdUser = await this.users.createUser(userEntity);
       return createdUser;
     } catch (error) {
-      HandleException(error);
+      throw new Exception(error.exception, error.message);
     }
   }
 
