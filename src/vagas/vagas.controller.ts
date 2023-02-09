@@ -70,15 +70,16 @@ export class VagasController {
   }
 
   // @UseGuards(AuthGuard(), IsUserAuthorization)
-  // @ApiBearerAuth()
+  @ApiBearerAuth()
   @Get()
   async findAll(
     @Res() response: Response,
-    //  @userLogged()
+     @userLogged()
     user: IUserEntity,
   ) {
     try {
-      return response.status(200).send(user.vaga);
+      const result = await this.vagasService.findAll();
+      return response.status(200).send(result);
     } catch (error) {
       HandleException(error);
     }
