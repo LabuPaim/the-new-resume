@@ -69,10 +69,14 @@ export class VagasController {
     }
   }
 
-  @UseGuards(AuthGuard(), IsUserAuthorization)
-  @ApiBearerAuth()
+  // @UseGuards(AuthGuard(), IsUserAuthorization)
+  // @ApiBearerAuth()
   @Get()
-  async findAll(@Res() response: Response, @userLogged() user: IUserEntity) {
+  async findAll(
+    @Res() response: Response,
+    //  @userLogged()
+    user: IUserEntity,
+  ) {
     try {
       return response.status(200).send(user.vaga);
     } catch (error) {
