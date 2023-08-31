@@ -53,6 +53,16 @@ $ yarn add class-validator
 ```
 
 ```bash
+$ yarn add class-validator-cpf
+# Instalação de lib para validação de cpf
+```
+
+```bash
+$ yarn add @nestjs/passport
+# Instalação de lib para validação de dados
+```
+
+```bash
 $ nest g resource [nome] --no-spec
 # Criação completa de arquitetura do CRUD
 ```
