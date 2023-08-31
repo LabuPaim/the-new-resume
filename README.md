@@ -63,6 +63,26 @@ $ yarn add @nestjs/passport
 ```
 
 ```bash
+$ yarn add passport-jwt
+# Instalação de lib para transferencia de dados em json
+```
+
+```bash
+$ yarn add @types/passport-jwt
+# Instalação de tipagem
+```
+
+```bash
+$ yarn add @nestjs/jwt
+# Instalação de tipagem no nest
+```
+
+```bash
+$ yarn add @nestjs/config
+# Instalação de configurações do nest
+```
+
+```bash
 $ nest g resource [nome] --no-spec
 # Criação completa de arquitetura do CRUD
 ```
