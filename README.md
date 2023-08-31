@@ -53,7 +53,7 @@ $ yarn add class-validator
 ```
 
 ```bash
-$ nest g resource
+$ nest g resource [nome] --no-spec
 # Criação completa de arquitetura do CRUD
 ```
 
